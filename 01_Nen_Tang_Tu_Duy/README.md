@@ -1,136 +1,194 @@
-# Chương 1: Nền Tảng Tư Duy (The Mindset) 🧠
+# 🏴‍☠️ Chương 1: Tư Duy Hacker (The Mindset)
 
-*"Để hack được Matrix, bạn phải nhìn thấy Matrix."*
-
-Chào mừng đến với chương đầu tiên. Ở đây, chúng ta sẽ không học cách dùng tool hack ngay. Chúng ta sẽ học cách **máy tính suy nghĩ**.
+> *"Tôi không dạy bạn cách dùng tool. Tôi dạy bạn cách máy tính suy nghĩ. Khi bạn hiểu máy tính, bạn là Chúa."*
 
 ---
 
-## 1.1. Bộ Nhớ Máy Tính (RAM) - Chiến Trường Chính
-Khi một game chạy (ví dụ: CS2, LoL, GTA), toàn bộ dữ liệu của nó (Máu, Đạn, Tọa độ, Tên nhân vật) đều phải được nạp vào **RAM**.
-Hacker không thể sửa đổi đĩa cứng để hack máu tức thì. Hacker sửa **RAM**.
+## 🛑 SỨ MỆNH (MISSION BRIEFING)
+Chào mừng tân binh. Bạn đang đứng trước cánh cổng của thế giới ngầm (Underground).
+Nhiệm vụ của chương này không phải là hack game ngay. Nhiệm vụ của bạn là **"Mở Mắt"**.
+Bạn phải nhìn thấy ma trận số (Matrix) đằng sau những hình ảnh đồ họa lung linh.
 
-### Cấu trúc của RAM
-Hãy tưởng tượng RAM là một thành phố khổng lồ.
-*   Mỗi ngôi nhà là một **Byte**.
-*   Mỗi ngôi nhà có một số nhà duy nhất gọi là **Địa chỉ (Address)**. Ví dụ: `0x00400000`.
-*   Bên trong ngôi nhà chứa **Giá trị (Value)**.
-
-### Các vùng nhớ quan trọng (Segments)
-Khi game chạy, nó không dùng RAM bừa bãi. Nó chia làm các khu:
-
-```mermaid
-graph TD
-    A[High Address (0xFFFFFFFF)] --> B[Stack (Biến cục bộ)]
-    B --> C[Heap (Biến động, Object)]
-    C --> D[.data (Biến toàn cục)]
-    D --> E[.text (Code logic)]
-    E --> F[Low Address (0x00000000)]
-```
-
-1.  **Code Segment (.text):** Chứa mã lệnh của game (Assembly). Đây là nơi chứa logic "Nếu hết máu thì chết". Hacker sửa ở đây gọi là **Code Injection**.
-2.  **Data Segment (.data):** Chứa các biến toàn cục (Global variables) cố định.
-3.  **Stack:** Vùng nhớ ngăn xếp, dùng cho các biến cục bộ (Local variables) trong hàm. Nó sinh ra và mất đi liên tục.
-4.  **Heap:** Vùng nhớ động. Đây là nơi chứa Nhân vật, Xe cộ, Item. **99% dữ liệu game nằm ở đây**.
+**Mục tiêu:**
+1.  Hiểu **RAM** hoạt động như thế nào (Chiến trường chính).
+2.  Đọc hiểu **Hexadecimal** (Ngôn ngữ của máy).
+3.  Nắm vững **Con Trỏ (Pointer)** (Bản đồ kho báu).
+4.  Tự tay code một **Dummy Game** để làm chuột bạch thí nghiệm.
 
 ---
 
-## 1.2. Hệ Thập Lục Phân (Hexadecimal)
-Tại sao Hacker luôn dùng `0x`?
-*   Con người dùng hệ 10 (0-9).
+## 1.1. Kho Vũ Khí (Weaponry Setup) 🛠️
+Đi đánh trận mà tay không thì chỉ có "Feed mạng". Cài đặt ngay bộ 3 hủy diệt này:
+
+1.  **Visual Studio 2022 (Community)**:
+    *   *Là gì:* Lò rèn vũ khí. Nơi chúng ta viết code C/C++.
+    *   *Link:* [Download](https://visualstudio.microsoft.com/vs/community/)
+    *   *Lưu ý:* Khi cài nhớ tích chọn **"Desktop development with C++"**. Đừng cài nhầm VS Code (đó chỉ là Text Editor).
+
+2.  **Cheat Engine (Bản mới nhất)**:
+    *   *Là gì:* Kính hiển vi soi RAM.
+    *   *Link:* [Download](https://www.cheatengine.org/)
+    *   *Cảnh báo:* Antivirus sẽ la làng là virus. Kệ nó, tắt Antivirus đi. Hacker mà sợ virus à?
+
+3.  **Process Hacker 2**:
+    *   *Là gì:* Task Manager phiên bản "ngầu". Dùng để soi các tiến trình ẩn, tắt Anti-cheat.
+
+---
+
+## 1.2. Chiến Trường RAM (The Battlefield) 💾
+Khi bạn bật game (CS2, LoL...), toàn bộ Game được load từ ổ cứng lên **RAM**.
+Hacker không tấn công ổ cứng. Hacker tấn công **RAM**.
+
+Hãy tưởng tượng **RAM** là một **Thành Phố Khổng Lồ**:
+*   Mỗi **Byte** là một ngôi nhà.
+*   Mỗi ngôi nhà có một **Số nhà (Address)** duy nhất. Ví dụ: `0x00400000`.
+*   Bên trong ngôi nhà chứa **Cư dân (Value)**. Cư dân có thể là số Máu, số Đạn, hoặc tên nhân vật.
+
+### 🗺️ Bản Đồ Thành Phố (Memory Layout)
+Thành phố này được quy hoạch thành 4 quận chính. Bạn bắt buộc phải nhớ:
+
+![Memory Layout Diagram](images/memory_layout.png)
+
+> **🧠 Ghi nhớ cốt tử:**
+> *   Hack Máu/Đạn/Tiền: Chúng ta lùng sục ở **Heap**.
+> *   Hack Bất tử/Nhìn xuyên tường (Logic): Chúng ta sửa đổi **Code (.text)**.
+
+---
+
+## 1.3. Ngôn Ngữ Của Máy (Hexadecimal) 🤖
+Tại sao Hacker luôn viết `0xDEADBEEF` mà không viết số thường?
+
+*   Bạn dùng hệ 10 (0-9).
 *   Máy tính dùng hệ 2 (0-1).
-*   Hệ 16 (Hex) là cách viết tắt hoàn hảo cho hệ 2. Một ký tự Hex đại diện cho 4 bit.
+*   **Hệ 16 (Hex)** là cầu nối hoàn hảo. 1 chữ số Hex đại diện chính xác cho 4 bit nhị phân. Gọn gàng, sexy.
 
-**Bảng quy đổi:**
-| Dec | Hex | Binary |
-| :--- | :--- | :--- |
-| 0 | 0 | 0000 |
-| 10 | A | 1010 |
-| 15 | F | 1111 |
-| 16 | 10 | 0001 0000 |
-| 255 | FF | 1111 1111 |
+**Bảng Chuyển Đổi Nhanh:**
 
-**Quy tắc:** Mọi địa chỉ bộ nhớ đều viết dưới dạng Hex (VD: `0xDEADBEEF`).
+| Thập phân (Dec) | Hex (0x) | Nhị phân (Bin) | Ý nghĩa |
+| :--- | :--- | :--- | :--- |
+| 0 | 0 | 0000 | Rỗng |
+| 10 | A | 1010 | |
+| 15 | F | 1111 | Full 4-bit |
+| 255 | FF | 1111 1111 | Full 1 Byte (Max) |
 
----
-
-## 1.3. Kiểu Dữ Liệu (Data Types)
-Máy tính không biết "Máu" là gì. Nó chỉ biết các ô nhớ. Bạn phải biết game dùng kiểu dữ liệu gì để quét cho đúng.
-
-1.  **Byte (1 byte):** Số nhỏ (0-255). Thường dùng cho `Team ID` (1=CT, 2=T), `Level`.
-2.  **Word / Short (2 bytes):** Số vừa (-32k đến 32k). Ít dùng.
-3.  **Integer / Dword (4 bytes):** Số nguyên (-2 tỷ đến 2 tỷ). **Đa số Máu, Đạn, Tiền dùng kiểu này.**
-4.  **Float (4 bytes):** Số thực có dấu phẩy (100.5). **Tọa độ (X, Y, Z) luôn luôn là Float.**
-5.  **Double (8 bytes):** Số thực siêu lớn. Dùng trong game Engine xịn (Unreal 5) hoặc game Web (JS).
+> **Quy ước:** Bất cứ khi nào thấy tiền tố `0x`, hãy hiểu đó là số Hex.
+> Ví dụ: Địa chỉ `0x123` không phải là một trăm hai mươi ba, mà là `1*256 + 2*16 + 3`.
 
 ---
 
-## 1.4. Con Trỏ (Pointers) - Bản Đồ Kho Báu
-Đây là khái niệm giết chết 90% người mới học. Hãy chú ý.
+## 1.4. Nhận Diện Mục Tiêu (Data Types) 🎯
+Máy tính không biết "Máu" hay "Mana". Nó chỉ biết các ô nhớ vô hồn.
+Để tìm được kẻ địch, bạn phải biết hắn trông như thế nào.
 
-Trong lập trình hiện đại, biến Máu **không bao giờ** nằm yên một chỗ. Mỗi lần bạn mở game, Windows sẽ cấp cho Máu một địa chỉ nhà mới (cơ chế ASLR - Address Space Layout Randomization).
-Nếu bạn tìm ra địa chỉ Máu hôm nay, ngày mai nó sẽ sai.
-
-**Giải pháp:** Game phải lưu lại địa chỉ mới đó vào một chỗ cố định. Chỗ đó gọi là **Con Trỏ (Pointer)**.
-Con trỏ là một biến đặc biệt: Giá trị của nó không phải là số lượng, mà là **địa chỉ của biến khác**.
-
-**Chuỗi Pointer (Pointer Chain):**
-Game thường giấu dữ liệu qua nhiều tầng trỏ:
-`Module Base Address` -> `World Pointer` -> `Player Array` -> `My Player` -> `Health`.
-Hacker phải dùng Cheat Engine để lần ngược (Reverse) chuỗi này (Pointer Scan).
+1.  **Byte (1 byte)**:
+    *   *Dùng cho:* Levell, Team ID (1=Terrorist, 2=Counter), Boolean (0=False, 1=True).
+    *   *Range:* 0 - 255.
+2.  **Integer (4 bytes)**: **⚠️ QUAN TRỌNG NHẤT**
+    *   *Dùng cho:* Máu, Đạn, Tiền, Giáp.
+    *   *Range:* -2 tỷ đến +2 tỷ.
+3.  **Float (4 bytes)**:
+    *   *Dùng cho:* **Tọa độ (X, Y, Z)**, Tốc độ di chuyển, Góc nhìn.
+    *   *Đặc điểm:* Có dấu chấm động (VD: `100.5f`).
+4.  **Double (8 bytes)**:
+    *   *Dùng cho:* Game Engine đời mới (Unreal 5) hoặc Game Web (JavaScript).
+5.  **String**:
+    *   *Dùng cho:* Tên nhân vật, Chat log.
 
 ---
 
-## 1.5. Bài Tập Thực Hành (Lab 1)
-Bạn không thể hack game nếu không biết tạo ra game. Hãy viết một "Game giả" bằng C++ để làm chuột bạch.
+## 1.5. Con Trỏ (Pointers) - Bản Đồ Kho Báu 🗺️
+Đây là "Trùm Cuối" của mớ lý thuyết. Nếu vượt qua được nó, bạn đã thắng 50% game.
 
-### Code: `DummyGame.cpp`
+**Vấn đề:**
+Game hiện đại có cơ chế **ASLR** (Address Space Layout Randomization).
+Mỗi lần khởi động game, Windows sẽ tráo đổi vị trí các ngôi nhà trên RAM.
+Hôm nay địa chỉ Máu là `0x1000`, mai nó nhảy sang `0x9999`.
+
+**Giải pháp:**
+Game cũng sợ lạc mất Máu. Nên Game luôn giữ một tờ giấy ghi địa chỉ Máu hiện tại. Tờ giấy đó gọi là **Con Trỏ (Pointer)**.
+Con trỏ thường nằm ở một vị trí **Tĩnh (Static)** không bao giờ đổi (thường là trong file `.exe` hoặc `.dll`).
+
+**Mô hình truy tìm kho báu:**
+![Pointer Chain Diagram](images/pointer_chain.png)
+
+Hacker dùng Cheat Engine để **Pointer Scan** - Dò ngược từ Kho báu về Tòa thị chính để tìm ra con đường này.
+
+---
+
+## 1.6. Nhiệm Vụ Thực Hành: Tạo Dummy Game 🎮
+Bạn không thể hack nếu không biết game được tạo ra thế nào.
+Hãy code một con game giả lập bằng C++ để làm "bao cát" cho chúng ta tập luyện.
+
+### Bước 1: Code `DummyGame.cpp`
+Copy đoạn code này vào Visual Studio và chạy (F5).
+
 ```cpp
 #include <iostream>
 #include <windows.h>
-#include <string>
+#include <vector>
 
-// Một Class mô phỏng nhân vật game
+// Cấu trúc nhân vật trong game
 struct Player {
-    int id;
-    char name[32];
-    int health; // Máu (Offset 0x24)
-    int ammo;   // Đạn (Offset 0x28)
+    int id;             // 4 bytes
+    char name[32];      // 32 bytes
+    int health;         // 4 bytes (Mục tiêu của chúng ta!)
+    int ammo;           // 4 bytes
+    float posX, posY;   // 8 bytes
 };
 
 int main() {
-    SetConsoleTitleA("Dummy Game for Hacking");
-    
-    // Cấp phát động (Heap) - Mô phỏng game thật
+    SetConsoleTitleA("Dummy Game - Targeted by VTech");
+    std::cout << ">>> GAME INIT... <<<" << std::endl;
+
+    // Cấp phát nhân vật trên HEAP (Vùng nhớ động)
+    // Đây là lý do địa chỉ thay đổi mỗi lần chạy
     Player* myPlayer = new Player();
-    myPlayer->id = 1;
-    strcpy(myPlayer->name, "HackMePlz");
+    
+    // Gán chỉ số ban đầu
+    myPlayer->id = 777;
+    strcpy_s(myPlayer->name, "Neo");
     myPlayer->health = 100;
     myPlayer->ammo = 30;
+    myPlayer->posX = 150.5f;
 
-    // In ra địa chỉ để người học đối chiếu (Trong thực tế Game sẽ không in cái này!)
-    std::cout << "--- DEBUG INFO ---" << std::endl;
-    std::cout << "Base Pointer (Stack):    0x" << std::hex << (uintptr_t)&myPlayer << std::endl;
-    std::cout << "Player Address (Heap):   0x" << std::hex << (uintptr_t)myPlayer << std::endl;
-    std::cout << "Health Address (Actual): 0x" << std::hex << (uintptr_t)&myPlayer->health << std::endl;
-    std::cout << "------------------" << std::endl;
+    // In địa chỉ ra để "nhá hàng" (Game thật không bao giờ có dòng này!)
+    std::cout << "[DEBUG] Player Struct Address: 0x" << std::hex << (uintptr_t)myPlayer << std::endl;
+    std::cout << "[DEBUG] Health Address:        0x" << std::hex << (uintptr_t)&myPlayer->health << std::endl;
+    std::cout << "------------------------------------------------" << std::endl;
 
     while (true) {
-        std::cout << "Game Loop: Health = " << std::dec << myPlayer->health 
-                  << " | Ammo = " << myPlayer->ammo << std::endl;
+        // Game Loop
+        std::cout << "Player: " << myPlayer->name 
+                  << " | HP: " << std::dec << myPlayer->health 
+                  << " | Ammo: " << myPlayer->ammo 
+                  << " | Pos: " << myPlayer->posX << std::endl;
 
-        // Giả lập logic game: Hồi máu nếu thấp, mất máu nếu > 0
-        if (myPlayer->health > 0) myPlayer->health--;
-        if (myPlayer->health <= 0) std::cout << "YOU DIED!" << std::endl;
-        
+        // Logic game: Tự mất máu theo thời gian
+        if (myPlayer->health > 0) {
+            myPlayer->health -= 1; 
+        } else {
+            std::cout << ">>> GAME OVER (YOU DIED) <<<" << std::endl;
+            // Hồi sinh
+            std::cout << "Respawning..." << std::endl;
+            myPlayer->health = 100;
+        }
+
         Sleep(1000); // Nghỉ 1 giây
     }
     
+    delete myPlayer;
     return 0;
 }
 ```
 
-### Nhiệm vụ:
-1.  Tải và cài đặt **Dev-C++** hoặc **Visual Studio** để biên dịch code trên ra file `.exe`.
-2.  Chạy `DummyGame.exe`. Nó sẽ in ra dòng "Health = 100" và giảm dần.
-3.  Vào chương sau để dùng Cheat Engine "trị" nó.
+### Bước 2: Thử Nghiệm
+1.  Chạy `DummyGame.exe`.
+2.  Mở **Cheat Engine**.
+3.  Kết nối vào Process `DummyGame.exe`.
+4.  Thử tìm giá trị `health` xem nào? (Nó bắt đầu từ 100 và giảm dần).
+
+> **Gợi ý:** Nếu bạn tìm ra, hãy thử "Freeze" (Đóng băng) nó. Nếu Console của game cứ in ra `HP: 100` mãi mãi mặc dù game đang trừ máu -> **BẠN ĐÃ THÀNH CÔNG!** 🎉
+
+---
+
+[Tiếp theo: Chương 2 - Hacker's Swiss Knife (Cheat Engine)](../02_Cong_Cu_Than_Thanh/README.md)

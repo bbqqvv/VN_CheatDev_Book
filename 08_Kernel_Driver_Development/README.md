@@ -1,49 +1,101 @@
-# Chương 8: Kernel Driver Development (Đỉnh Cao Bảo Mật) 🛡️
+# ☠️ Chương 8: Kernel Driver (Vùng Đất Cấm)
 
-*"Welcome to Ring 0. Nơi một dòng code sai làm màn hình xanh (BSOD)."*
-
-Tại sao Hacker phải xuống Kernel?
-Vì Anti-Cheat (EAC, Vanguard) đang ngồi ở đó. Nếu bạn ở User Mode (Ring 3), bạn là dân thường, Anti-Cheat là Cảnh sát. Cảnh sát có quyền khám xét, bắt giữ bạn.
-Nếu bạn xuống Kernel (Ring 0), bạn là Đặc vụ ngầm. Bạn ngang hàng hoặc cao hơn Cảnh sát.
+> *"Ở Ring 3, nếu bạn sai, chương trình Crash. Ở Ring 0, nếu bạn sai, cả hệ điều hành sụp đổ (Blue Screen of Death)."*
 
 ---
 
-## 8.1. Kiến Trúc Windows (Ring Levels)
-*   **Ring 3 (User Mode):** Ứng dụng bình thường. Bị giới hạn bởi các hàm API. Không thể đọc RAM của tiến trình System.
-*   **Ring 0 (Kernel Mode):** Quyền năng tuyệt đối. Truy cập trực tiếp phần cứng, bộ nhớ vật lý.
+## 🛑 SỨ MỆNH (MISSION BRIEFING)
+Tại sao chúng ta phải mạo hiểm xuống Kernel?
+Vì **Anti-Cheat** (Vanguard, EasyAntiCheat, BattlEye) đều nằm ở đó.
+Khi bạn dùng `ReadProcessMemory` ở User Mode (Ring 3), Anti-Cheat ở Kernel (Ring 0) sẽ nhìn thấy và chặn ngay lập tức. "Mày tuổi gì mà đòi sờ vào game của tao?".
 
-Anti-Cheat dùng **ObRegisterCallbacks** trong Kernel để chặn quyền `OpenProcess` của Cheat Engine. Đó là lý do bạn bật CE lên nhưng không attach được vào game.
+Muốn đánh bại Anti-Cheat, bạn phải ngang hàng với nó. Bạn phải viết **Kernel Driver**.
 
----
-
-## 8.2. Viết Driver Cheat (.sys)
-Để viết Driver, bạn cần **WDK (Windows Driver Kit)** và **Visual Studio**.
-
-### Hàm quan trọng trong Driver:
-1.  `DriverEntry`: Hàm Main của Driver.
-2.  `MmCopyVirtualMemory`: Hàm copy RAM từ Process này sang Process khác (Đây là `ReadProcessMemory` phiên bản Kernel).
-3.  `PsLookupProcessByProcessId`: Tìm Process Game trong Kernel.
-
-### Giao tiếp IOCTL
-App Hack (Client) ở User Mode không thể gọi hàm Kernel. Nó phải gửi "tín hiệu" qua cổng IOCTL.
-1.  Scanner.exe (User) gửi lệnh: `IOCTL_READ_MEMORY` + `Address: 0x123` + `PID: Game`.
-2.  Driver.sys (Kernel) nhận lệnh -> Thực hiện đọc RAM -> Trả kết quả về Scanner.
+**Mục tiêu:**
+1.  Hiểu kiến trúc **Ring 0 vs Ring 3**.
+2.  Hiểu sự nguy hiểm của **BSOD**.
+3.  Viết một **Driver Hello World** đơn giản.
 
 ---
 
-## 8.3. Load Driver (Vấn đề Chữ Ký)
-Windows 10/11 bắt buộc mọi Driver phải có Chữ ký số (Digital Signature) của Microsoft (tốn hàng nghìn $).
-Hacker lách luật bằng cách: **KDMapper (Intel Manual Map)**.
-*   Lợi dụng một Driver cũ của Intel/Nvidia/Capcom có lỗ hổng bảo mật nhưng có chữ ký xịn.
-*   Dùng Driver lỗi đó để "cõng" Driver hack của mình vào Kernel (Manual Map).
-*   Sau khi vào xong, xóa dấu vết của Driver lỗi. Driver hack vẫn nằm trong RAM và chạy nhưng không có trong danh sách quản lý của Windows (Driverless).
+## 8.1. Kiến Trúc Ring (The Hierarchy) 👑
+CPU Intel/AMD chia quyền lực thành 4 vòng tròn (Rings). Windows chỉ dùng 2 vòng:
+
+![Kernel Ring Diagram](images/kernel_ring.png)
+
+*   **Ring 3 (User Mode):** Nơi ở của dân thường (Chrome, Word, Game, và các tool hack gà mờ). Bạn làm gì ở đây cũng bị Ring 0 giám sát.
+*   **Ring 0 (Kernel Mode):** Nơi ở của Thượng đế (Windows Kernel, Drivers card màn hình, và Anti-Cheat). Ở đây, bạn có thể truy cập **mọi địa chỉ RAM** của bất kỳ process nào mà không cần xin phép.
+
+**Anti-Cheat hoạt động thế nào?**
+Nó cài một Driver (.sys) vào Ring 0. Nó đăng ký các hàm Callback:
+> *"Bất kỳ ai (Ring 3) định mở Handle vào process Game, hãy báo cho tao. Tao sẽ tước quyền ngay lập tức."*
+User Mode Hacker -> ☠️ Bất lực.
 
 ---
 
-## 8.4. Bypass Anti-Cheat (Cơ bản)
-1.  **Handle Stripping:** Nếu tool hack của bạn lỡ mở Handle vào game, Anti-Cheat sẽ quét thấy. Driver cho phép bạn đọc/ghi mà không cần mở Handle.
-2.  **CR3 Paging:** Anti-Cheat chặn truy cập bộ nhớ ảo? Driver đọc thẳng Bộ nhớ vật lý (Physical Memory) thông qua thanh ghi CR3 (Directory Table Base).
+## 8.2. Rủi Ro (The Blue Screen of Death) 🟦
+Quyền lực càng lớn, trách nhiệm càng cao.
+Trong Ring 3, nếu code bạn lỗi (`Null Pointer`), chỉ có tool của bạn tắt ngúm.
+Trong Ring 0, nếu code bạn lỗi, **Windows sẽ dừng hoạt động ngay lập tức** để bảo vệ phần cứng. Màn hình xanh chết chóc (BSOD) hiện ra. Máy khởi động lại.
 
-**Lưu ý:** Lập trình Kernel cực khó và nguy hiểm. Sai một ly đi một dặm (Blue Screen). Hãy test trên Máy ảo (VMware) trước.
+> **Quy tắc số 1:** Test Driver trên máy ảo (VMware/VirtualBox) trước khi chạy thật. Đừng bao giờ code Driver trên máy chính nếu không muốn mất dữ liệu.
 
-[Tiếp theo: Chương 9 - Anti-Cheat Evasion](../09_AntiCheat_Evasion/README.md)
+---
+
+## 8.3. Chế Tạo Driver Đầu Tiên (Hello World .sys) 🚗
+Bạn cần cài đặt **Visual Studio** và **WDK (Windows Driver Kit)**.
+
+Tạo Project: `Kernel Mode Driver, Empty (KMDF)`.
+
+**Code `Driver.c`:**
+
+```c
+#include <ntddk.h>
+
+// Hàm dọn dẹp khi tắt Driver (Bắt buộc phải có, nếu không sẽ không tắt được Driver)
+void DriverUnload(PDRIVER_OBJECT pDriverObject) {
+    UNREFERENCED_PARAMETER(pDriverObject);
+    DbgPrint(">>> Hacker: Bye bye Kernel! Safe landing. <<<\n");
+}
+
+// Hàm chính (Giống main() trong C++)
+NTSTATUS DriverEntry(PDRIVER_OBJECT pDriverObject, PUNICODE_STRING pRegistryPath) {
+    UNREFERENCED_PARAMETER(pRegistryPath);
+
+    pDriverObject->DriverUnload = DriverUnload;
+
+    DbgPrint(">>> Hacker: HELLO RING 0! Power Overwhelming! <<<\n");
+
+    return STATUS_SUCCESS;
+}
+```
+
+**Biên dịch:** Bấm Build -> Bạn sẽ nhận được file `MyDriver.sys`.
+File này **không thể chạy bằng cách double click**.
+
+---
+
+## 8.4. Load Driver (Nhập Tịch Ring 0) 🛡️
+Windows 10/11 mặc định cấm load Driver không có chữ ký số (Unsigned Driver) để chống virus.
+Để load driver "cây nhà lá vườn" của chúng ta, bạn phải bật chế độ **Test Mode**.
+
+1.  Mở CMD (Admin).
+2.  Gõ: `bcdedit /set testsigning on`
+3.  Restart máy. (Bạn sẽ thấy chữ "Test Mode" ở góc màn hình).
+
+**Dùng Tool load:**
+Sử dụng **OSR Loader** hoặc **KDU** để load file `.sys` vào hệ thống.
+Sau khi load, dùng **DebugView** (của Sysinternals) để xem dòng log `>>> Hacker: HELLO RING 0!`.
+
+Nếu thấy nó -> Chúc mừng, bạn đã đặt chân vào thánh địa Kernel!
+
+---
+
+## 🛑 Cảnh Báo Cuối Cùng
+Viết Driver Hack Game là vi phạm EULA nghiêm trọng và có thể bị kiện.
+Kiến thức này chỉ để học tập và hiểu về OS Internals.
+Các Anti-Cheat hiện tại (Vanguard) chạy ngay từ khi boot máy. Cuộc chiến ở Ring 0 rất khốc liệt và đẫm máu (BSOD liên tục).
+
+---
+
+[Tiếp theo: Chương 9 - Anti-Cheat Evasion (Trốn Tìm)](../09_Anti_Cheat_Evasion/README.md)

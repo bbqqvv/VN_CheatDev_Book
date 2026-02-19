@@ -1,406 +1,470 @@
-﻿# [VN] CheatDev Book: FULL VERSION
-
-**Generated at:** 02/18/2026 23:56:33
+---
+title: "[VN] CheatDev Book: The Legendary Edition"
+author: "VTech Digital Solution"
+date: "2026-02-19"
+---
+# [VN] CheatDev Book: The Legendary Edition
+## *Hệ sinh thái Game Hacking & Reverse Engineering thực chiến*
 
 ---
 
-# ðŸ“˜ [VN] CheatDev Book: Tá»« Zero Ä‘áº¿n Hero
-
-**TÃ¡c giáº£:** Antigravity (Google DeepMind) & User
-**PhiÃªn báº£n:** 1.0 (Legendary Edition)
-
-ChÃ o má»«ng báº¡n Ä‘áº¿n vá»›i cuá»‘n sÃ¡ch giÃ¡o khoa toÃ n diá»‡n nháº¥t vá» **Game Hacking**, **Reverse Engineering** vÃ  **An Ninh Máº¡ng**.
-ÄÃ¢y khÃ´ng chá»‰ lÃ  lÃ½ thuyáº¿t. ÄÃ¢y lÃ  báº£n Ä‘á»“ kho bÃ¡u dáº«n báº¡n Ä‘i tá»« nhá»¯ng khÃ¡i niá»‡m cÆ¡ báº£n nháº¥t cá»§a mÃ¡y tÃ­nh Ä‘áº¿n táº­n cÃ¹ng cá»§a Kernel Há»‡ Ä‘iá»u hÃ nh.
-
-> âš ï¸ **TUYÃŠN Bá» MIá»„N TRá»ª TRÃCH NHIá»†M**
-> Kiáº¿n thá»©c trong sÃ¡ch nÃ y nháº±m má»¥c Ä‘Ã­ch nghiÃªn cá»©u báº£o máº­t vÃ  giÃ¡o dá»¥c.
-> TÃ¡c giáº£ khÃ´ng chá»‹u trÃ¡ch nhiá»‡m cho báº¥t ká»³ hÃ nh vi vi pháº¡m phÃ¡p luáº­t nÃ o cá»§a ngÆ°á»i Ä‘á»c.
+**NHÀ XUẤT BẢN:** VTech Digital Solution
+**PHIÊN BẢN:** 1.5 (Legendary Ultimate Edition)
+**NGÀY CẬP NHẬT:** 19/02/2026
+**LIÊN HỆ:** bbqqvv@github / vtech-digital.vn
 
 ---
 
-## ðŸ“‘ Má»¤C Lá»¤C (Table of Contents)
+### ⚖️ BẢN QUYỀN VÀ PHÁP LÝ (COPYRIGHT & LEGAL)
 
-### ðŸ§± PHáº¦N 1: KHOA Há»ŒC & Ná»€N Táº¢NG
-*   **[ChÆ°Æ¡ng 1: Ná»n Táº£ng TÆ° Duy (The Mindset)](./01_Nen_Tang_Tu_Duy/README.md)**
-    *   Cáº¥u trÃºc bá»™ nhá»› (RAM, Stack, Heap).
-    *   Há»‡ tháº­p lá»¥c phÃ¢n (Hex) vÃ  Binary.
-    *   NgÃ´n ngá»¯ C/C++ vÃ  Con trá» (Pointers).
+© 2026 **VTech Digital Solution**. Bảo lưu mọi quyền.
+Không phần nào của cuốn sách này được sao chép, lưu trữ trong hệ thống khôi phục, hoặc truyền tải dưới bất kỳ hình thức nào hoặc bằng bất kỳ phương tiện nào (điện tử, cơ khí, sao chụp, ghi âm hoặc cách khác) mà không có sự cho phép trước bằng văn bản của nhà xuất bản.
 
-*   **[ChÆ°Æ¡ng 2: CÃ´ng Cá»¥ Tháº§n ThÃ¡nh (The Tools)](./02_Cong_Cu_Than_Thanh/README.md)**
-    *   Cheat Engine (QuÃ©t Memory).
-    *   ReClass.NET (PhÃ¢n tÃ­ch Struct).
-    *   x64dbg / IDA Pro (CÆ¡ báº£n).
+**Tuyên bố miễn trừ trách nhiệm (Disclaimer):**
+Cuốn sách này được viết với mục đích giáo dục và nghiên cứu an ninh mạng. Mọi ví dụ được thực hiện trên môi trường máy ảo và các game cho phép nghiên cứu. Tác giả và nhà xuất bản không khuyến khích và không chịu trách nhiệm cho bất kỳ hành động phá hoại, gây thiệt hại kinh tế cho các nhà phát hành game, hoặc vi phạm pháp luật của người đọc. 
 
-### âš”ï¸ PHáº¦N 2: Ká»¸ THUáº¬T HACK CÆ  Báº¢N (USER MODE)
-*   **[ChÆ°Æ¡ng 3: External Hacking (Ngoáº¡i Khoa)](./03_Lap_Trinh_External/README.md)**
-    *   Windows API (`ReadProcessMemory`, `WriteProcessMemory`).
-    *   Váº½ Overlay ESP (World to Screen).
-
-*   **[ChÆ°Æ¡ng 4: Internal Hacking (Ná»™i Khoa)](./04_Lap_Trinh_Internal/README.md)**
-    *   DLL Injection (TiÃªm mÃ£).
-    *   Function Hooking (MinHook, Detours).
-    *   DirectX/OpenGL Hooking (Menu ImGui).
-
-### ðŸ“± PHáº¦N 3: MOBILE SECURITY
-*   **[ChÆ°Æ¡ng 5: Mobile Hacking (Android/iOS)](./05_Mobile_Hacking/README.md)**
-    *   Cáº¥u trÃºc APK, DEX, Native Library (`.so`).
-    *   Modding Game Unity (IL2CPP) vÃ  Cocos2d-x.
-    *   Sá»­ dá»¥ng Frida Ä‘á»ƒ Hook Runtime.
-
-### ðŸ”¬ PHáº¦N 4: PHÃ‚N TÃCH CHUYÃŠN SÃ‚U (REVERSE ENGINEERING)
-*   **[ChÆ°Æ¡ng 6: Reverse Engineering Advanced](./06_Reverse_Engineering_Advanced/README.md)**
-    *   PhÃ¢n tÃ­ch TÄ©nh (Static) vá»›i IDA Pro / Ghidra.
-    *   PhÃ¢n tÃ­ch Äá»™ng (Dynamic) vÃ  Tracing.
-    *   Unpacking (Gá»¡ rá»‘i) vÃ  Decryption.
-
-### ðŸŒ PHáº¦N 5: NETWORK SECURITY
-*   **[ChÆ°Æ¡ng 7: Networking & Packet Hacking](./07_Networking_Packet_Hacking/README.md)**
-    *   PhÃ¢n tÃ­ch gÃ³i tin vá»›i Wireshark.
-    *   Cháº·n vÃ  sá»­a gÃ³i tin (WPE Pro / MitM).
-    *   MÃ£ hÃ³a vÃ  Báº£o máº­t Ä‘Æ°á»ng truyá»n.
-
-### ðŸ›¡ï¸ PHáº¦N 6: KERNEL & ANTI-CHEAT (GOD MODE)
-*   **[ChÆ°Æ¡ng 8: Kernel Driver Development](./08_Kernel_Driver_Development/README.md)**
-    *   Láº­p trÃ¬nh Driver (`.sys`) á»Ÿ Ring 0.
-    *   Giao tiáº¿p IOCTL giá»¯a User vÃ  Kernel.
-    *   Äá»c bá»™ nhá»› váº­t lÃ½.
-
-*   **[ChÆ°Æ¡ng 9: Anti-Cheat Evasion](./09_AntiCheat_Evasion/README.md)**
-    *   CÆ¡ cháº¿ hoáº¡t Ä‘á»™ng cá»§a BattlEye, EAC, Vanguard.
-    *   Bypass Signature vÃ  Heuristic Scan.
-    *   HWID Spoofing (Giáº£ máº¡o pháº§n cá»©ng).
-
-### ðŸ† PHáº¦N 7: THá»°C CHIáº¾N (PROJECTS)
-*   **[ChÆ°Æ¡ng 10: Final Projects](./10_Final_Projects/README.md)**
-    *   Tá»•ng há»£p cÃ¡c bÃ i táº­p lá»›n Ä‘á»ƒ tá»‘t nghiá»‡p.
-    *   XÃ¢y dá»±ng Mod Menu hoÃ n chá»‰nh.
-    *   Viáº¿t Driver áº©n mÃ¬nh.
-
----
-*"Stay Hungry. Stay Foolish. Stay Undetected."*
-
+*Sử dụng kiến thức để trở thành người hùng, không phải tội phạm.*
 
 ---
 
-# ChÆ°Æ¡ng 1: Ná»n Táº£ng TÆ° Duy (The Mindset) ðŸ§ 
+### 🏢 VỀ VTECH DIGITAL SOLUTION
 
-*"Äá»ƒ hack Ä‘Æ°á»£c Matrix, báº¡n pháº£i nhÃ¬n tháº¥y Matrix."*
-
-ChÃ o má»«ng Ä‘áº¿n vá»›i chÆ°Æ¡ng Ä‘áº§u tiÃªn. á»ž Ä‘Ã¢y, chÃºng ta sáº½ khÃ´ng há»c cÃ¡ch dÃ¹ng tool hack ngay. ChÃºng ta sáº½ há»c cÃ¡ch **mÃ¡y tÃ­nh suy nghÄ©**.
-
----
-
-## 1.1. Bá»™ Nhá»› MÃ¡y TÃ­nh (RAM) - Chiáº¿n TrÆ°á»ng ChÃ­nh
-Khi má»™t game cháº¡y (vÃ­ dá»¥: CS2, LoL, GTA), toÃ n bá»™ dá»¯ liá»‡u cá»§a nÃ³ (MÃ¡u, Äáº¡n, Tá»a Ä‘á»™, TÃªn nhÃ¢n váº­t) Ä‘á»u pháº£i Ä‘Æ°á»£c náº¡p vÃ o **RAM**.
-Hacker khÃ´ng thá»ƒ sá»­a Ä‘á»•i Ä‘Ä©a cá»©ng Ä‘á»ƒ hack mÃ¡u tá»©c thÃ¬. Hacker sá»­a **RAM**.
-
-### Cáº¥u trÃºc cá»§a RAM
-HÃ£y tÆ°á»Ÿng tÆ°á»£ng RAM lÃ  má»™t thÃ nh phá»‘ khá»•ng lá»“.
-*   Má»—i ngÃ´i nhÃ  lÃ  má»™t **Byte**.
-*   Má»—i ngÃ´i nhÃ  cÃ³ má»™t sá»‘ nhÃ  duy nháº¥t gá»i lÃ  **Äá»‹a chá»‰ (Address)**. VÃ­ dá»¥: `0x00400000`.
-*   BÃªn trong ngÃ´i nhÃ  chá»©a **GiÃ¡ trá»‹ (Value)**.
-
-### CÃ¡c vÃ¹ng nhá»› quan trá»ng (Segments)
-Khi game cháº¡y, nÃ³ khÃ´ng dÃ¹ng RAM bá»«a bÃ£i. NÃ³ chia lÃ m cÃ¡c khu:
-1.  **Code Segment (.text):** Chá»©a mÃ£ lá»‡nh cá»§a game (Assembly). ÄÃ¢y lÃ  nÆ¡i chá»©a logic "Náº¿u háº¿t mÃ¡u thÃ¬ cháº¿t". Hacker sá»­a á»Ÿ Ä‘Ã¢y gá»i lÃ  **Code Injection**.
-2.  **Data Segment (.data):** Chá»©a cÃ¡c biáº¿n toÃ n cá»¥c (Global variables) cá»‘ Ä‘á»‹nh.
-3.  **Stack:** VÃ¹ng nhá»› ngÄƒn xáº¿p, dÃ¹ng cho cÃ¡c biáº¿n cá»¥c bá»™ (Local variables) trong hÃ m. NÃ³ sinh ra vÃ  máº¥t Ä‘i liÃªn tá»¥c.
-4.  **Heap:** VÃ¹ng nhá»› Ä‘á»™ng. ÄÃ¢y lÃ  nÆ¡i chá»©a NhÃ¢n váº­t, Xe cá»™, Item. **99% dá»¯ liá»‡u game náº±m á»Ÿ Ä‘Ã¢y**.
+**VTech Digital Solution** là đơn vị hàng đầu trong việc nghiên cứu và đào tạo các giải pháp kỹ thuật chuyên sâu tại Việt Nam. Chúng tôi tập trung vào:
+*   Phân tích mã độc (Malware Analysis).
+*   Kiểm thử bảo mật (Pentesting).
+*   Phát triển hệ thống can thiệp phần cứng/phần mềm bậc thấp.
 
 ---
 
-## 1.2. Há»‡ Tháº­p Lá»¥c PhÃ¢n (Hexadecimal)
-Táº¡i sao Hacker luÃ´n dÃ¹ng `0x`?
-*   Con ngÆ°á»i dÃ¹ng há»‡ 10 (0-9).
-*   MÃ¡y tÃ­nh dÃ¹ng há»‡ 2 (0-1).
-*   Há»‡ 16 (Hex) lÃ  cÃ¡ch viáº¿t táº¯t hoÃ n háº£o cho há»‡ 2. Má»™t kÃ½ tá»± Hex Ä‘áº¡i diá»‡n cho 4 bit.
+### 🎯 TẠI SAO BẠN CẦN CUỐN SÁCH NÀY?
 
-**Báº£ng quy Ä‘á»•i:**
-| Dec | Hex | Binary |
-| :--- | :--- | :--- |
-| 0 | 0 | 0000 |
-| 10 | A | 1010 |
-| 15 | F | 1111 |
-| 16 | 10 | 0001 0000 |
-| 255 | FF | 1111 1111 |
-
-**Quy táº¯c:** Má»i Ä‘á»‹a chá»‰ bá»™ nhá»› Ä‘á»u viáº¿t dÆ°á»›i dáº¡ng Hex (VD: `0xDEADBEEF`).
+Trong một thế giới mà các hệ thống bảo mật ngày càng phức tạp (EAC, Vanguard, BattlEye), kiến thức "mì ăn liền" không còn chỗ đứng. Cuốn sách này được thiết kế để:
+1.  **Phá vỡ rào cản:** Biến những khái niệm khô khan về Assembly, Register, Kernel thành những bài học dễ hiểu qua hình ảnh.
+2.  **Thực tế 100%:** Mỗi chương đều đi kèm Code mẫu và Lab thực hành.
+3.  **Lộ trình bền vững:** Không dừng lại ở việc "Hack", chúng tôi dạy bạn cách "Xây dựng" (Building Anti-Cheat).
 
 ---
 
-## 1.3. Kiá»ƒu Dá»¯ Liá»‡u (Data Types)
-MÃ¡y tÃ­nh khÃ´ng biáº¿t "MÃ¡u" lÃ  gÃ¬. NÃ³ chá»‰ biáº¿t cÃ¡c Ã´ nhá»›. Báº¡n pháº£i biáº¿t game dÃ¹ng kiá»ƒu dá»¯ liá»‡u gÃ¬ Ä‘á»ƒ quÃ©t cho Ä‘Ãºng.
+<div style="page-break-after: always;"></div>
 
-1.  **Byte (1 byte):** Sá»‘ nhá» (0-255). ThÆ°á»ng dÃ¹ng cho `Team ID` (1=CT, 2=T), `Level`.
-2.  **Word / Short (2 bytes):** Sá»‘ vá»«a (-32k Ä‘áº¿n 32k). Ãt dÃ¹ng.
-3.  **Integer / Dword (4 bytes):** Sá»‘ nguyÃªn (-2 tá»· Ä‘áº¿n 2 tá»·). **Äa sá»‘ MÃ¡u, Äáº¡n, Tiá»n dÃ¹ng kiá»ƒu nÃ y.**
-4.  **Float (4 bytes):** Sá»‘ thá»±c cÃ³ dáº¥u pháº©y (100.5). **Tá»a Ä‘á»™ (X, Y, Z) luÃ´n luÃ´n lÃ  Float.**
-5.  **Double (8 bytes):** Sá»‘ thá»±c siÃªu lá»›n. DÃ¹ng trong game Engine xá»‹n (Unreal 5) hoáº·c game Web (JS).
+
+## 📑 MỤC LỤC (Table of Contents)
+${toc}
 
 ---
 
-## 1.4. Con Trá» (Pointers) - Báº£n Äá»“ Kho BÃ¡u
-ÄÃ¢y lÃ  khÃ¡i niá»‡m giáº¿t cháº¿t 90% ngÆ°á»i má»›i há»c. HÃ£y chÃº Ã½.
+# 🏴‍☠️ Chương 1: Tư Duy Hacker (The Mindset)
 
-Trong láº­p trÃ¬nh hiá»‡n Ä‘áº¡i, biáº¿n MÃ¡u **khÃ´ng bao giá»** náº±m yÃªn má»™t chá»—. Má»—i láº§n báº¡n má»Ÿ game, Windows sáº½ cáº¥p cho MÃ¡u má»™t Ä‘á»‹a chá»‰ nhÃ  má»›i (cÆ¡ cháº¿ ASLR - Address Space Layout Randomization).
-Náº¿u báº¡n tÃ¬m ra Ä‘á»‹a chá»‰ MÃ¡u hÃ´m nay, ngÃ y mai nÃ³ sáº½ sai.
-
-**Giáº£i phÃ¡p:** Game pháº£i lÆ°u láº¡i Ä‘á»‹a chá»‰ má»›i Ä‘Ã³ vÃ o má»™t chá»— cá»‘ Ä‘á»‹nh. Chá»— Ä‘Ã³ gá»i lÃ  **Con Trá» (Pointer)**.
-Con trá» lÃ  má»™t biáº¿n Ä‘áº·c biá»‡t: GiÃ¡ trá»‹ cá»§a nÃ³ khÃ´ng pháº£i lÃ  sá»‘ lÆ°á»£ng, mÃ  lÃ  **Ä‘á»‹a chá»‰ cá»§a biáº¿n khÃ¡c**.
-
-**Chuá»—i Pointer (Pointer Chain):**
-Game thÆ°á»ng giáº¥u dá»¯ liá»‡u qua nhiá»u táº§ng trá»:
-`Module Base Address` -> `World Pointer` -> `Player Array` -> `My Player` -> `Health`.
-Hacker pháº£i dÃ¹ng Cheat Engine Ä‘á»ƒ láº§n ngÆ°á»£c (Reverse) chuá»—i nÃ y (Pointer Scan).
+> *"Tôi không dạy bạn cách dùng tool. Tôi dạy bạn cách máy tính suy nghĩ. Khi bạn hiểu máy tính, bạn là Chúa."*
 
 ---
 
-## 1.5. BÃ i Táº­p Thá»±c HÃ nh (Lab 1)
-Báº¡n khÃ´ng thá»ƒ hack game náº¿u khÃ´ng biáº¿t táº¡o ra game. HÃ£y viáº¿t má»™t "Game giáº£" báº±ng C++ Ä‘á»ƒ lÃ m chuá»™t báº¡ch.
+## 🛑 SỨ MỆNH (MISSION BRIEFING)
+Chào mừng tân binh. Bạn đang đứng trước cánh cổng của thế giới ngầm (Underground).
+Nhiệm vụ của chương này không phải là hack game ngay. Nhiệm vụ của bạn là **"Mở Mắt"**.
+Bạn phải nhìn thấy ma trận số (Matrix) đằng sau những hình ảnh đồ họa lung linh.
 
-### Code: `DummyGame.cpp`
+**Mục tiêu:**
+1.  Hiểu **RAM** hoạt động như thế nào (Chiến trường chính).
+2.  Đọc hiểu **Hexadecimal** (Ngôn ngữ của máy).
+3.  Nắm vững **Con Trỏ (Pointer)** (Bản đồ kho báu).
+4.  Tự tay code một **Dummy Game** để làm chuột bạch thí nghiệm.
+
+---
+
+## 1.1. Kho Vũ Khí (Weaponry Setup) 🛠️
+Đi đánh trận mà tay không thì chỉ có "Feed mạng". Cài đặt ngay bộ 3 hủy diệt này:
+
+1.  **Visual Studio 2022 (Community)**:
+    *   *Là gì:* Lò rèn vũ khí. Nơi chúng ta viết code C/C++.
+    *   *Link:* [Download](https://visualstudio.microsoft.com/vs/community/)
+    *   *Lưu ý:* Khi cài nhớ tích chọn **"Desktop development with C++"**. Đừng cài nhầm VS Code (đó chỉ là Text Editor).
+
+2.  **Cheat Engine (Bản mới nhất)**:
+    *   *Là gì:* Kính hiển vi soi RAM.
+    *   *Link:* [Download](https://www.cheatengine.org/)
+    *   *Cảnh báo:* Antivirus sẽ la làng là virus. Kệ nó, tắt Antivirus đi. Hacker mà sợ virus à?
+
+3.  **Process Hacker 2**:
+    *   *Là gì:* Task Manager phiên bản "ngầu". Dùng để soi các tiến trình ẩn, tắt Anti-cheat.
+
+---
+
+## 1.2. Chiến Trường RAM (The Battlefield) 💾
+Khi bạn bật game (CS2, LoL...), toàn bộ Game được load từ ổ cứng lên **RAM**.
+Hacker không tấn công ổ cứng. Hacker tấn công **RAM**.
+
+Hãy tưởng tượng **RAM** là một **Thành Phố Khổng Lồ**:
+*   Mỗi **Byte** là một ngôi nhà.
+*   Mỗi ngôi nhà có một **Số nhà (Address)** duy nhất. Ví dụ: `0x00400000`.
+*   Bên trong ngôi nhà chứa **Cư dân (Value)**. Cư dân có thể là số Máu, số Đạn, hoặc tên nhân vật.
+
+### 🗺️ Bản Đồ Thành Phố (Memory Layout)
+Thành phố này được quy hoạch thành 4 quận chính. Bạn bắt buộc phải nhớ:
+
+![Memory Layout Diagram](01_Nen_Tang_Tu_Duy/images/memory_layout.png)
+
+> **🧠 Ghi nhớ cốt tử:**
+> *   Hack Máu/Đạn/Tiền: Chúng ta lùng sục ở **Heap**.
+> *   Hack Bất tử/Nhìn xuyên tường (Logic): Chúng ta sửa đổi **Code (.text)**.
+
+---
+
+## 1.3. Ngôn Ngữ Của Máy (Hexadecimal) 🤖
+Tại sao Hacker luôn viết `0xDEADBEEF` mà không viết số thường?
+
+*   Bạn dùng hệ 10 (0-9).
+*   Máy tính dùng hệ 2 (0-1).
+*   **Hệ 16 (Hex)** là cầu nối hoàn hảo. 1 chữ số Hex đại diện chính xác cho 4 bit nhị phân. Gọn gàng, sexy.
+
+**Bảng Chuyển Đổi Nhanh:**
+
+| Thập phân (Dec) | Hex (0x) | Nhị phân (Bin) | Ý nghĩa |
+| :--- | :--- | :--- | :--- |
+| 0 | 0 | 0000 | Rỗng |
+| 10 | A | 1010 | |
+| 15 | F | 1111 | Full 4-bit |
+| 255 | FF | 1111 1111 | Full 1 Byte (Max) |
+
+> **Quy ước:** Bất cứ khi nào thấy tiền tố `0x`, hãy hiểu đó là số Hex.
+> Ví dụ: Địa chỉ `0x123` không phải là một trăm hai mươi ba, mà là `1*256 + 2*16 + 3`.
+
+---
+
+## 1.4. Nhận Diện Mục Tiêu (Data Types) 🎯
+Máy tính không biết "Máu" hay "Mana". Nó chỉ biết các ô nhớ vô hồn.
+Để tìm được kẻ địch, bạn phải biết hắn trông như thế nào.
+
+1.  **Byte (1 byte)**:
+    *   *Dùng cho:* Levell, Team ID (1=Terrorist, 2=Counter), Boolean (0=False, 1=True).
+    *   *Range:* 0 - 255.
+2.  **Integer (4 bytes)**: **⚠️ QUAN TRỌNG NHẤT**
+    *   *Dùng cho:* Máu, Đạn, Tiền, Giáp.
+    *   *Range:* -2 tỷ đến +2 tỷ.
+3.  **Float (4 bytes)**:
+    *   *Dùng cho:* **Tọa độ (X, Y, Z)**, Tốc độ di chuyển, Góc nhìn.
+    *   *Đặc điểm:* Có dấu chấm động (VD: `100.5f`).
+4.  **Double (8 bytes)**:
+    *   *Dùng cho:* Game Engine đời mới (Unreal 5) hoặc Game Web (JavaScript).
+5.  **String**:
+    *   *Dùng cho:* Tên nhân vật, Chat log.
+
+---
+
+## 1.5. Con Trỏ (Pointers) - Bản Đồ Kho Báu 🗺️
+Đây là "Trùm Cuối" của mớ lý thuyết. Nếu vượt qua được nó, bạn đã thắng 50% game.
+
+**Vấn đề:**
+Game hiện đại có cơ chế **ASLR** (Address Space Layout Randomization).
+Mỗi lần khởi động game, Windows sẽ tráo đổi vị trí các ngôi nhà trên RAM.
+Hôm nay địa chỉ Máu là `0x1000`, mai nó nhảy sang `0x9999`.
+
+**Giải pháp:**
+Game cũng sợ lạc mất Máu. Nên Game luôn giữ một tờ giấy ghi địa chỉ Máu hiện tại. Tờ giấy đó gọi là **Con Trỏ (Pointer)**.
+Con trỏ thường nằm ở một vị trí **Tĩnh (Static)** không bao giờ đổi (thường là trong file `.exe` hoặc `.dll`).
+
+**Mô hình truy tìm kho báu:**
+![Pointer Chain Diagram](01_Nen_Tang_Tu_Duy/images/pointer_chain.png)
+
+Hacker dùng Cheat Engine để **Pointer Scan** - Dò ngược từ Kho báu về Tòa thị chính để tìm ra con đường này.
+
+---
+
+## 1.6. Nhiệm Vụ Thực Hành: Tạo Dummy Game 🎮
+Bạn không thể hack nếu không biết game được tạo ra thế nào.
+Hãy code một con game giả lập bằng C++ để làm "bao cát" cho chúng ta tập luyện.
+
+### Bước 1: Code `DummyGame.cpp`
+Copy đoạn code này vào Visual Studio và chạy (F5).
+
 ```cpp
 #include <iostream>
 #include <windows.h>
-#include <string>
+#include <vector>
 
-// Má»™t Class mÃ´ phá»ng nhÃ¢n váº­t game
+// Cấu trúc nhân vật trong game
 struct Player {
-    int id;
-    char name[32];
-    int health; // MÃ¡u (Offset 0x24)
-    int ammo;   // Äáº¡n (Offset 0x28)
+    int id;             // 4 bytes
+    char name[32];      // 32 bytes
+    int health;         // 4 bytes (Mục tiêu của chúng ta!)
+    int ammo;           // 4 bytes
+    float posX, posY;   // 8 bytes
 };
 
 int main() {
-    SetConsoleTitleA("Dummy Game for Hacking");
-    
-    // Cáº¥p phÃ¡t Ä‘á»™ng (Heap) - MÃ´ phá»ng game tháº­t
+    SetConsoleTitleA("Dummy Game - Targeted by VTech");
+    std::cout << ">>> GAME INIT... <<<" << std::endl;
+
+    // Cấp phát nhân vật trên HEAP (Vùng nhớ động)
+    // Đây là lý do địa chỉ thay đổi mỗi lần chạy
     Player* myPlayer = new Player();
-    myPlayer->id = 1;
-    strcpy(myPlayer->name, "HackMePlz");
+    
+    // Gán chỉ số ban đầu
+    myPlayer->id = 777;
+    strcpy_s(myPlayer->name, "Neo");
     myPlayer->health = 100;
     myPlayer->ammo = 30;
+    myPlayer->posX = 150.5f;
 
-    // In ra Ä‘á»‹a chá»‰ Ä‘á»ƒ ngÆ°á»i há»c Ä‘á»‘i chiáº¿u (Trong thá»±c táº¿ Game sáº½ khÃ´ng in cÃ¡i nÃ y!)
-    std::cout << "--- DEBUG INFO ---" << std::endl;
-    std::cout << "Base Pointer (Stack):    0x" << std::hex << (uintptr_t)&myPlayer << std::endl;
-    std::cout << "Player Address (Heap):   0x" << std::hex << (uintptr_t)myPlayer << std::endl;
-    std::cout << "Health Address (Actual): 0x" << std::hex << (uintptr_t)&myPlayer->health << std::endl;
-    std::cout << "------------------" << std::endl;
+    // In địa chỉ ra để "nhá hàng" (Game thật không bao giờ có dòng này!)
+    std::cout << "[DEBUG] Player Struct Address: 0x" << std::hex << (uintptr_t)myPlayer << std::endl;
+    std::cout << "[DEBUG] Health Address:        0x" << std::hex << (uintptr_t)&myPlayer->health << std::endl;
+    std::cout << "------------------------------------------------" << std::endl;
 
     while (true) {
-        std::cout << "Game Loop: Health = " << std::dec << myPlayer->health 
-                  << " | Ammo = " << myPlayer->ammo << std::endl;
+        // Game Loop
+        std::cout << "Player: " << myPlayer->name 
+                  << " | HP: " << std::dec << myPlayer->health 
+                  << " | Ammo: " << myPlayer->ammo 
+                  << " | Pos: " << myPlayer->posX << std::endl;
 
-        // Giáº£ láº­p logic game: Há»“i mÃ¡u náº¿u tháº¥p, máº¥t mÃ¡u náº¿u > 0
-        if (myPlayer->health > 0) myPlayer->health--;
-        if (myPlayer->health <= 0) std::cout << "YOU DIED!" << std::endl;
-        
-        Sleep(1000); // Nghá»‰ 1 giÃ¢y
+        // Logic game: Tự mất máu theo thời gian
+        if (myPlayer->health > 0) {
+            myPlayer->health -= 1; 
+        } else {
+            std::cout << ">>> GAME OVER (YOU DIED) <<<" << std::endl;
+            // Hồi sinh
+            std::cout << "Respawning..." << std::endl;
+            myPlayer->health = 100;
+        }
+
+        Sleep(1000); // Nghỉ 1 giây
     }
     
+    delete myPlayer;
     return 0;
 }
 ```
 
-### Nhiá»‡m vá»¥:
-1.  Táº£i vÃ  cÃ i Ä‘áº·t **Dev-C++** hoáº·c **Visual Studio** Ä‘á»ƒ biÃªn dá»‹ch code trÃªn ra file `.exe`.
-2.  Cháº¡y `DummyGame.exe`. NÃ³ sáº½ in ra dÃ²ng "Health = 100" vÃ  giáº£m dáº§n.
-3.  VÃ o chÆ°Æ¡ng sau Ä‘á»ƒ dÃ¹ng Cheat Engine "trá»‹" nÃ³.
+### Bước 2: Thử Nghiệm
+1.  Chạy `DummyGame.exe`.
+2.  Mở **Cheat Engine**.
+3.  Kết nối vào Process `DummyGame.exe`.
+4.  Thử tìm giá trị `health` xem nào? (Nó bắt đầu từ 100 và giảm dần).
 
-
----
-
-# ChÆ°Æ¡ng 2: CÃ´ng Cá»¥ Tháº§n ThÃ¡nh (God's Toys) ðŸ› ï¸
-
-*"NgÆ°á»i thá»£ giá»i khÃ´ng Ä‘á»• lá»—i cho cÃ´ng cá»¥, nhÆ°ng ngÆ°á»i thá»£ tá»“i thÃ¬ khÃ´ng biáº¿t dÃ¹ng cÃ´ng cá»¥."*
-
-Äá»ƒ hack game, báº¡n cáº§n nhá»¯ng Ä‘Ã´i máº¯t nhÃ¬n xuyÃªn tháº¥u RAM. ÄÃ¢y lÃ  bá»™ cÃ´ng cá»¥ tiÃªu chuáº©n cá»§a ngÃ nh.
+> **Gợi ý:** Nếu bạn tìm ra, hãy thử "Freeze" (Đóng băng) nó. Nếu Console của game cứ in ra `HP: 100` mãi mãi mặc dù game đang trừ máu -> **BẠN ĐÃ THÀNH CÔNG!** 🎉
 
 ---
 
-## 2.1. Cheat Engine (CE) - Huyá»n Thoáº¡i
-Náº¿u báº¡n chÆ°a cÃ i Cheat Engine, hÃ£y cÃ i ngay. Äá»«ng táº£i báº£n crack, báº£n gá»‘c miá»…n phÃ­ vÃ  mÃ£ nguá»“n má»Ÿ.
+[Tiếp theo: Chương 2 - Hacker's Swiss Knife (Cheat Engine)](../02_Cong_Cu_Than_Thanh/README.md)
 
-### CÃ¡c ká»¹ thuáº­t quÃ©t (Scan Types)
-1.  **Exact Value (GiÃ¡ trá»‹ chÃ­nh xÃ¡c):** Báº¡n biáº¿t rÃµ sá»‘ mÃ¡u lÃ  100. QuÃ©t 100. Bá»‹ báº¯n cÃ²n 90. Next Scan 90. -> TÃ¬m ra ngay.
-2.  **Unknown Initial Value (GiÃ¡ trá»‹ khá»Ÿi Ä‘áº§u khÃ´ng rÃµ):** DÃ¹ng cho thanh mÃ¡u khÃ´ng hiá»‡n sá»‘ (chá»‰ cÃ³ thanh Ä‘á»).
-    *   Báº¯t Ä‘áº§u quÃ©t: "Unknown Initial Value".
-    *   Máº¥t mÃ¡u -> Scan "Decreased Value" (GiÃ¡ trá»‹ giáº£m).
-    *   Há»“i mÃ¡u -> Scan "Increased Value" (GiÃ¡ trá»‹ tÄƒng).
-    *   Äá»©ng yÃªn -> Scan "Unchanged Value" (KhÃ´ng Ä‘á»•i).
-    *   Láº·p láº¡i Ä‘áº¿n khi cÃ²n Ã­t káº¿t quáº£.
 
-### Pointer Scan (TÃ¬m Ä‘á»‹a chá»‰ gá»‘c)
-Khi báº¡n tÃ¬m Ä‘Æ°á»£c Ä‘á»‹a chá»‰ MÃ¡u (VD: `0x12345678`), reset game nÃ³ sáº½ máº¥t. Báº¡n cáº§n tÃ¬m Pointer.
-1.  Chuá»™t pháº£i vÃ o Ä‘á»‹a chá»‰ MÃ¡u -> **"Pointer scan for this address"**.
-2.  CE sáº½ lÆ°u láº¡i má»™t báº£n Ä‘á»“ bá»™ nhá»› (snapshot).
-3.  Táº¯t game, má»Ÿ láº¡i. TÃ¬m láº¡i Ä‘á»‹a chá»‰ MÃ¡u má»›i (VD: `0x22222222`).
-4.  VÃ o cá»­a sá»• Pointer Scan -> **"Rescan memory"** -> Nháº­p Ä‘á»‹a chá»‰ má»›i `0x22222222`.
-5.  CE sáº½ so sÃ¡nh 2 láº§n quÃ©t vÃ  chá»‰ giá»¯ láº¡i nhá»¯ng Ä‘Æ°á»ng dáº«n trá» Ä‘Ãºng tá»›i cáº£ 2 Ä‘á»‹a chá»‰. ÄÃ³ lÃ  **Multi-level Pointer** báº¡n cáº§n.
+<div style="page-break-after: always;"></div>
+
+# ⚔️ Chương 2: Làm Chủ Cheat Engine (Weapon Mastery)
+
+> *"Cheat Engine không chỉ là tool hack. Nó là kính hiển vi, là dao mổ, và là khẩu súng bắn tỉa của mọi Game Hacker."*
 
 ---
 
-## 2.2. ReClass.NET - KÃ­nh Hiá»ƒn Vi Cáº¥u TrÃºc
-Cheat Engine giÃºp tÃ¬m 1 giÃ¡ trá»‹. ReClass giÃºp báº¡n nhÃ¬n tháº¥y **cáº£ má»™t khu phá»‘**.
+## 🛑 SỨ MỆNH (MISSION BRIEFING)
+Ở Chương 1, bạn đã biết RAM là chiến trường.
+Ở Chương này, bạn sẽ học cách sử dụng vũ khí tối thượng: **Cheat Engine (CE)**.
 
-### Táº¡i sao cáº§n ReClass?
-Láº­p trÃ¬nh viÃªn Game thiáº¿t káº¿ nhÃ¢n váº­t theo **Class**:
+Đừng lầm tưởng CE chỉ dùng để chỉnh tiền game offline. Các kỹ thuật `Scan`, `Debugger`, `Disassembler` của nó là nền tảng cho mọi tool hack cao cấp sau này (kể cả hack game online).
+
+**Mục tiêu:**
+1.  Hiểu cơ chế **Lọc (Filtering)** của CE.
+2.  Thành thạo 3 kỹ thuật Scan tử thần: **Exact Value**, **Unknown Initial Value**, **Floating Point**.
+3.  Biết cách tạo **Cheat Table (.CT)** để lưu trữ chiến công.
+
+---
+
+## 2.1. Cơ Chế Hoạt Động (The Logic) 🧠
+Làm sao CE tìm được đúng địa chỉ máu trong đống hỗn độn hàng tỷ byte của RAM?
+Nó dùng phương pháp **LOẠI TRỪ (Elimination)**.
+
+![Scanning Logic Diagram](02_Cong_Cu_Than_Thanh/images/scanning_logic.png)
+
+1.  **First Scan:** Quét toàn bộ RAM xem ai có giá trị `100` (giả sử máu là 100). Có thể tìm ra 1 triệu kết quả.
+2.  **Change:** Bạn vào game, để quái đánh còn `90` máu.
+3.  **Next Scan:** Bảo CE "Trong 1 triệu thằng kia, thằng nào giờ biến thành 90?".
+4.  **Repeat:** Lặp lại cho đến khi chỉ còn 1 kẻ sống sót. Đó là địa chỉ máu.
+
+---
+
+## 2.2. Kỹ Thuật 1: Exact Value Scan (Xạ Thủ) 🔫
+Dùng khi bạn **nhìn thấy số cụ thể** trên màn hình (Máu, Đạn, Tiền).
+
+**Bài Tập:** Hack Đạn trong `DummyGame` (hoặc Tutorial Step 2 của CE).
+
+**Quy Trình Tác Chiến:**
+1.  **Nhập số đạn hiện tại** (VD: 30) vào ô `Value`.
+2.  Chọn `Scan Type` = **Exact Value**.
+3.  Chọn `Value Type` = **4 Bytes** (Chuẩn công nghiệp).
+4.  Bấm **First Scan**. (Kết quả: Hàng ngàn địa chỉ).
+5.  Vào game bắn 1 viên (Đạn còn 29).
+6.  Nhập `29` vào ô `Value` -> Bấm **Next Scan**.
+7.  Lặp lại cho đến khi còn dưới 5 địa chỉ.
+8.  Kéo xuống dưới (Cheat Table), sửa Value thành `9999`.
+9.  Vào game bắn thử. Nếu đạn không giảm hoặc tăng lên 9999 -> **HEADSHOT!** 🎯
+
+---
+
+## 2.3. Kỹ Thuật 2: Unknown Initial Value (Truy Vết) 👣
+Dùng khi bạn **không biết số cụ thể** (Thanh máu dạng thanh trượt, không hiện số).
+
+**Quy Trình Tác Chiến:**
+1.  Chọn `Scan Type` = **Unknown initial value**.
+2.  Bấm **First Scan**. (CE sẽ ghi nhớ toàn bộ RAM hiện tại).
+3.  Vào game, để mất một ít máu.
+4.  Chọn `Scan Type` = **Decreased value** (Giá trị đã giảm).
+5.  Bấm **Next Scan**.
+6.  Vào game, đứng yên hồi máu (hoặc bơm máu).
+7.  Chọn `Scan Type` = **Increased value**.
+8.  Bấm **Next Scan**.
+9.  Lặp lại (Decreased/Increased/Unchanged) cho đến khi tìm ra.
+
+> **Mẹo:** Nếu thanh máu đầy, quét Scan Type = **Changed value** liên tục cũng là một cách hay.
+
+---
+
+## 2.4. Kỹ Thuật 3: Floating Point (Bắn Tỉa Tọa Độ) 📡
+Dùng cho **Máu (dạng %)** hoặc **Tọa độ (X, Y, Z)**.
+Máy tính lưu số thực (có dấu chấm) khác hoàn toàn số nguyên.
+
+**Quy Trình:**
+*   Đổi `Value Type` từ `4 Bytes` sang **Float**.
+*   Các bước Scan y hệt như Exact Value.
+*   **Lưu ý:** Nếu Scan Float không ra, hãy thử **Double**. (Game xịn thường dùng Double cho tọa độ để bản đồ rộng không bị lỗi).
+
+---
+
+## 2.5. Memory Viewer & Pointers (Thâm Nhập Sâu) 🕵️‍♂️
+Tìm được địa chỉ chưa phải là xong. Khởi động lại game là mất.
+Chúng ta cần tìm **Con Trỏ (Pointer)** để hack vĩnh viễn.
+
+1.  Chuột phải vào địa chỉ hack được -> **Pointer Scan for this address**.
+2.  Chọn **Max Level** = 5 (Đừng tham quá, 5 tầng là đủ sâu).
+3.  Bấm OK và chờ đợi.
+4.  Sau khi Scan xong, tắt game bật lại.
+5.  Vào bảng Pointer Scan -> **Rescan memory** -> Chọn process game mới.
+6.  Những pointer nào vẫn trỏ đúng về máu -> Đó là **Pointer Xịn**.
+
+---
+
+## 🛑 NHIỆM VỤ VỀ NHÀ (HOMEWORK)
+1.  Hoàn thành **Tutorial 1 đến 5** của Cheat Engine (Vào Help -> Cheat Engine Tutorial).
+2.  Dùng `DummyGame.exe` ở chương 1:
+    *   Hack `Health` thành 99999.
+    *   Hack `Ammo` thành vô hạn.
+    *   Tìm Pointer của `Health` (Level nâng cao).
+
+---
+
+[Tiếp theo: Chương 3 - External Hacking (C++ Project đầu tiên)](../03_Lap_Trinh_External/README.md)
+
+
+<div style="page-break-after: always;"></div>
+
+# 🩸 Chương 3: External Hacking (First Blood)
+
+> *"Dùng Cheat Engine là đi mượn kiếm. Tự code Trainer là tự rèn kiếm cho riêng mình."*
+
+---
+
+## 🛑 SỨ MỆNH (MISSION BRIEFING)
+Bạn đã biết tìm địa chỉ bằng Cheat Engine. Nhưng bạn không thể bắt khách hàng của mình tải Cheat Engine về rồi làm thủ công từng bước được.
+Bạn cần đóng gói kỹ thuật đó vào một file `.exe` duy nhất. Bấm 1 nút -> Hack xong.
+
+Đó gọi là **External Hacking**: Viết một phần mềm chạy *bên ngoài* game, dùng quyền Admin thò tay vào sửa RAM của game.
+
+**Mục tiêu:**
+1.  Hiểu quy trình **OpenProcess**.
+2.  Sử dụng thuần thục 2 hàm WinAPI thần thánh: `ReadProcessMemory` (RPM) và `WriteProcessMemory` (WPM).
+3.  Code một **Trainer C++** hoàn chỉnh hack `DummyGame`.
+
+---
+
+## 3.1. Quy Trình Xâm Nhập (Infiltration Flow) 🕵️‍♂️
+Windows bảo vệ các Process rất nghiêm ngặt. Process A không thể tự tiện sửa Process B.
+Để làm được điều đó, Hacker phải xin một cái "Chìa khóa" (Handle) từ hệ điều hành.
+
+![API Flow Diagram](03_Lap_Trinh_External/images/api_flow.png)
+
+1.  **Find Window:** Tìm cửa sổ game để lấy `Process ID` (PID).
+2.  **OpenProcess:** Dùng PID để xin Windows cấp quyền truy cập (`PROCESS_ALL_ACCESS`).
+3.  **Read/Write:** Dùng Handle đã xin được để Đọc/Ghi RAM.
+
+---
+
+## 3.2. Vũ Khí C++ (The Arsenal) 🧰
+
+### `FindWindowA`
+Tìm cửa sổ game bằng tên Class hoặc tên Title.
 ```cpp
-class Soldier {
-    char pad[4];
-    int Health;      // Offset 4
-    int Armor;       // Offset 8
-    Vector3 Position;// Offset 12 (X, Y, Z)
-};
+HWND hwnd = FindWindowA(NULL, "Dummy Game for Hacking");
 ```
-Trong bá»™ nhá»›, cÃ¡c biáº¿n nÃ y náº±m sÃ¡t nhau.
-Náº¿u báº¡n tÃ¬m Ä‘Æ°á»£c `Health`, cháº¯c cháº¯n `Armor` náº±m ngay sau nÃ³, vÃ  `Position` náº±m sau `Armor`.
-**ReClass** cho phÃ©p báº¡n nháº­p Ä‘á»‹a chá»‰ `Health` vÃ o, vÃ  nÃ³ sáº½ hiá»ƒn thá»‹ cÃ¡c byte xung quanh dÆ°á»›i dáº¡ng báº£ng. Báº¡n cÃ³ thá»ƒ Ä‘oÃ¡n ra cÃ¡c biáº¿n khÃ¡c mÃ  khÃ´ng cáº§n tÃ¬m kiáº¿m.
+
+### `GetWindowThreadProcessId`
+Lấy số chứng minh thư (PID) của game.
+```cpp
+DWORD pid;
+GetWindowThreadProcessId(hwnd, &pid);
+```
+
+### `OpenProcess`
+Xin chìa khóa vào nhà.
+```cpp
+HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
+```
+
+### `WriteProcessMemory` (WPM)
+Cú đấm quyết định. Ghi đè giá trị mới vào địa chỉ cũ.
+```cpp
+int newHealth = 9999;
+WriteProcessMemory(hProcess, (LPVOID)0xDEADBEEF, &newHealth, sizeof(newHealth), NULL);
+```
 
 ---
 
-## 2.3. x64dbg & IDA Pro (DÃ nh cho dÃ¢n chuyÃªn)
-*   **x64dbg:** TrÃ¬nh gá»¡ lá»—i (Debugger). DÃ¹ng Ä‘á»ƒ Ä‘áº·t Breakpoint. VÃ­ dá»¥: Báº¡n muá»‘n biáº¿t dÃ²ng code nÃ o trá»« tiá»n cá»§a báº¡n?
-    *   TÃ¬m Ä‘á»‹a chá»‰ Tiá»n.
-    *   Äáº·t **Hardware Breakpoint on Write** (Dá»«ng khi cÃ³ ghi).
-    *   VÃ o game mua Ä‘á»“.
-    *   Game sáº½ "Ä‘Ã³ng bÄƒng" ngay láº­p tá»©c táº¡i dÃ²ng codeAssembly thá»±c hiá»‡n viá»‡c trá»« tiá»n (`SUB EAX, EBX`).
-    *   Báº¡n cÃ³ thá»ƒ sá»­a lá»‡nh Ä‘Ã³ thÃ nh `NOP` (No Operation - KhÃ´ng lÃ m gÃ¬ cáº£) -> Mua Ä‘á»“ khÃ´ng máº¥t tiá»n.
+## 3.3. Thực Hành: Code Trainer Đầu Tiên (Project: FirstBlood) 🩸
+Hãy tạo một project C++ mới tên là `SimpleTrainer`.
 
-*   **IDA Pro:** TrÃ¬nh phÃ¢n tÃ­ch tÄ©nh. DÃ¹ng Ä‘á»ƒ Ä‘á»c file `.exe` hoáº·c `.so` khi chÆ°a cháº¡y game. NÃ³ váº½ ra sÆ¡ Ä‘á»“ luá»“ng Ä‘i (Flowchart) cá»§a cÃ¡c hÃ m logic.
+**Yêu cầu:** Đã chạy `DummyGame.exe` và dùng Cheat Engine tìm ra địa chỉ Health (Ví dụ: `0x00EFF690` - *Lưu ý: Địa chỉ máy bạn sẽ khác, hãy thay thế vào code*).
 
----
-
-## 2.4. BÃ i Táº­p Thá»±c HÃ nh (Lab 2)
-Sá»­ dá»¥ng `DummyGame.exe` (Ä‘Ã£ biÃªn dá»‹ch á»Ÿ ChÆ°Æ¡ng 1).
-
-**Nhiá»‡m vá»¥ 1: Hack MÃ¡u**
-1.  DÃ¹ng CE tÃ¬m Ä‘á»‹a chá»‰ MÃ¡u.
-2.  ÄÃ³ng bÄƒng (Freeze) nÃ³ cá»Ÿ 999.
-3.  Chá» xem console cÃ³ bÃ¡o "YOU DIED" khÃ´ng.
-
-**Nhiá»‡m vá»¥ 2: TÃ¬m Offset Äáº¡n (Ammo)**
-1.  Báº¡n Ä‘Ã£ cÃ³ Ä‘á»‹a chá»‰ MÃ¡u (VÃ­ dá»¥: `0x00EFF964`).
-2.  Trong code C++ chÆ°Æ¡ng 1, `Health` khai bÃ¡o trÆ°á»›c, `Ammo` khai bÃ¡o sau. Cáº£ 2 lÃ  `int` (4 byte).
-3.  Theo logic: Äá»‹a chá»‰ Äáº¡n = Äá»‹a chá»‰ MÃ¡u + 4 (`0x00EFF968`).
-4.  Thá»­ vÃ o CE, "Add Address Manually", nháº­p `Äá»‹a chá»‰ MÃ¡u + 4`. Xem giÃ¡ trá»‹ Ä‘Ã³ cÃ³ pháº£i lÃ  30 (sá»‘ Ä‘áº¡n) khÃ´ng?
-5.  Náº¿u Ä‘Ãºng, chÃºc má»«ng báº¡n Ä‘Ã£ hiá»ƒu vá» **Struct Offset**!
-
-[Tiáº¿p theo: ChÆ°Æ¡ng 3 - External Hacking](../03_Lap_Trinh_External/README.md)
-
-
----
-
-# ChÆ°Æ¡ng 3: Láº­p TrÃ¬nh Hack External (Ngoáº¡i Khoa) ðŸ’‰
-
-*"An toÃ n, khÃ´ng Ä‘au, khÃ´ng xÃ¢m láº¥n."*
-
-Sau khi Ä‘Ã£ chÆ¡i chÃ¡n vá»›i Cheat Engine, báº¡n muá»‘n tá»± Ä‘á»™ng hÃ³a má»i thá»©? Báº¡n muá»‘n má»™t tool báº¥m F1 lÃ  Ä‘áº§y mÃ¡u chá»© khÃ´ng pháº£i Alt-Tab ra ngoÃ i tÃ¬m giÃ¡ trá»‹?
-ChÃ o má»«ng Ä‘áº¿n vá»›i **Láº­p trÃ¬nh External**.
-
-External Hack lÃ  má»™t chÆ°Æ¡ng trÃ¬nh `.exe` riÃªng biá»‡t, cháº¡y song song vá»›i game vÃ  dÃ¹ng quyá»n Admin Ä‘á»ƒ "thÃ² tay" vÃ o bá»™ nhá»› game.
-
----
-
-## 3.1. CÃ¡c HÃ m Windows API Quyá»n Lá»±c
-ThÆ° viá»‡n `<windows.h>` cung cáº¥p 4 hÃ m tháº§n thÃ¡nh:
-
-1.  `FindWindowA(NULL, "TÃªn Cá»­a Sá»• Game")`: TÃ¬m cá»­a sá»• game Ä‘ang cháº¡y. Tráº£ vá» `HWND`.
-2.  `GetWindowThreadProcessId(hwnd, &pid)`: Tá»« cá»­a sá»•, láº¥y ra ID cá»§a tiáº¿n trÃ¬nh (PID).
-3.  `OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid)`: Má»Ÿ cá»­a vÃ o nhÃ  game vá»›i quyá»n cao nháº¥t. Tráº£ vá» `HANDLE`.
-4.  `ReadProcessMemory (RPM)` / `WriteProcessMemory (WPM)`: Äá»c vÃ  Ghi dá»¯ liá»‡u.
-
----
-
-## 3.2. Code Máº«u Full: External Trainer (C++)
-ÄÃ¢y lÃ  má»™t Trainer hoÃ n chá»‰nh cho `DummyGame.exe` (ChÆ°Æ¡ng 1).
-
-### `Trainer.cpp`
 ```cpp
 #include <iostream>
-#include <windows.h>
-#include <string>
-#include <vector>
-
-// HÃ m giÃºp láº¥y Module Base Address (VÃ¹ng báº¯t Ä‘áº§u cá»§a file .exe trong RAM)
-// Cáº§n thiáº¿t Ä‘á»ƒ tÃ¬m Ä‘á»‹a chá»‰ tÄ©nh (Static Address)
-uintptr_t GetModuleBaseAddress(DWORD procId, const wchar_t* modName) {
-    uintptr_t modBaseAddr = 0;
-    HANDLE hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, procId);
-    if (hSnap != INVALID_HANDLE_VALUE) {
-        MODULEENTRY32 modEntry;
-        modEntry.dwSize = sizeof(modEntry);
-        if (Module32First(hSnap, &modEntry)) {
-            do {
-                if (!_wcsicmp(modEntry.szModule, modName)) {
-                    modBaseAddr = (uintptr_t)modEntry.modBaseAddr;
-                    break;
-                }
-            } while (Module32Next(hSnap, &modEntry));
-        }
-    }
-    CloseHandle(hSnap);
-    return modBaseAddr;
-}
+#include <windows.h> // Thư viện chứa các hàm WinAPI
 
 int main() {
-    std::cout << "--- EXTERNAL TRAINER v1.0 ---\n";
-    std::cout << "Dang tim game...\n";
+    SetConsoleTitleA("Simple External Trainer");
+    std::cout << ">>> WAITING FOR GAME... <<<" << std::endl;
 
-    // 1. TÃ¬m Game
-    HWND hwnd = FindWindowA(NULL, "Dummy Game for Hacking");
-    if (!hwnd) {
-        std::cout << "Khong thay game! Hay mo DummyGame.exe truoc.\n";
-        system("pause");
+    // 1. Tìm cửa sổ Game
+    HWND hwnd = FindWindowA(NULL, "Dummy Game - Targeted by VTech");
+    if (hwnd == NULL) {
+        std::cout << "[-] Khong tim thay game! Hay bat DummyGame.exe truoc." << std::endl;
         return 0;
     }
+    std::cout << "[+] Da tim thay cua so Game!" << std::endl;
 
-    // 2. Láº¥y PID
+    // 2. Lấy PID
     DWORD pid;
     GetWindowThreadProcessId(hwnd, &pid);
-    
-    // 3. Má»Ÿ Process
+    std::cout << "[+] Process ID: " << pid << std::endl;
+
+    // 3. Mở Process (Xin quyền truy cập)
     HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
-    if (!hProcess) {
-        std::cout << "Khong the mo process! (Chay duoi quyen Admin?)\n";
+    if (hProcess == NULL) {
+        std::cout << "[-] Khong the mo Process. Hay chay Admin!" << std::endl;
         return 0;
     }
-    
-    std::cout << "Da ket noi toi Process ID: " << pid << "\n";
+    std::cout << "[+] OpenProcess Success! Handle: " << hProcess << std::endl;
 
-    // 4. TÃ¬m Pointer Chain
-    // Giáº£ sá»­ (tá»« bÃ i táº­p trÆ°á»›c), báº¡n tÃ¬m ra:
-    // Health Address = [AddressOfPlayer] + 0x24
-    // AddressOfPlayer nam tai: 0x00EFF964 (VÃ­ dá»¥ - Sá»‘ nÃ y thay Ä‘á»•i má»—i láº§n cháº¡y náº¿u báº¡n khÃ´ng tÃ¬m Base Address)
-    
-    // á»ž bÃ i nÃ y, tÃ´i sáº½ nháº­p Ä‘á»‹a chá»‰ MÃ¡u thá»§ cÃ´ng (báº¡n copy tá»« Cheat Engine sang)
-    uintptr_t healthAddr; 
-    std::cout << "Nhap Dia Chi Mau (Hex, vd: 00EFF964): ";
-    std::cin >> std::hex >> healthAddr;
+    // 4. Hack Loop
+    // Thay địa chỉ này bằng địa chỉ bạn tìm được từ Cheat Engine!!
+    uintptr_t healthAddr = 0x00EFF690; 
+    int cheatVal = 9999;
 
-    // 5. VÃ²ng láº·p Hack
-    std::cout << "[F1] Hack Mau (999)\n[F2] Hack Dan (999)\n[Insert] Thoat\n";
-    
     while (true) {
-        // Náº¿u báº¥m F1
-        if (GetAsyncKeyState(VK_F1) & 1) {
-            int newHealth = 999;
-            WriteProcessMemory(hProcess, (BYTE*)healthAddr, &newHealth, sizeof(newHealth), nullptr);
-            std::cout << "-> Da Hack Mau!\n";
+        if (GetAsyncKeyState(VK_F1) & 1) { // Nếu bấm F1
+            // Ghi đè máu
+            WriteProcessMemory(hProcess, (LPVOID)healthAddr, &cheatVal, sizeof(cheatVal), NULL);
+            std::cout << "[!] HACKED: Set Health -> 9999" << std::endl;
+            Beep(1000, 100); // Kêu Bíp cho ngầu
         }
-
-        // Náº¿u báº¥m F2 (Ammo lÃ  Health + 4)
-        if (GetAsyncKeyState(VK_F2) & 1) {
-            int newAmmo = 999;
-            uintptr_t ammoAddr = healthAddr + 0x04; // Offset Struct
-            WriteProcessMemory(hProcess, (BYTE*)ammoAddr, &newAmmo, sizeof(newAmmo), nullptr);
-            std::cout << "-> Da Hack Dan!\n";
-        }
-
-        if (GetAsyncKeyState(VK_INSERT) & 1) break;
-        Sleep(10);
+        Sleep(50); // Nghỉ nhẹ để đỡ ngốn CPU
     }
 
     CloseHandle(hProcess);
@@ -410,487 +474,816 @@ int main() {
 
 ---
 
-## 3.3. Váº½ Overlay (ESP)
-Hack "nhÃ¬n xuyÃªn tÆ°á»ng" thá»±c cháº¥t lÃ  váº½ cÃ¡c hÃ¬nh chá»¯ nháº­t lÃªn mÃ n hÃ¬nh.
-Äá»ƒ lÃ m Ä‘Æ°á»£c Ä‘iá»u nÃ y tá»« External:
-1.  Táº¡o má»™t cá»­a sá»• trong suá»‘t, luÃ´n náº±m trÃªn cÃ¹ng (Topmost), kÃ­ch thÆ°á»›c báº±ng mÃ n hÃ¬nh game.
-2.  DÃ¹ng DirectX hoáº·c GDI Ä‘á»ƒ váº½ lÃªn cá»­a sá»• Ä‘Ã³.
-3.  TÃ­nh toÃ¡n tá»a Ä‘á»™:
-    *   Äá»c tá»a Ä‘á»™ Ä‘á»‹ch (X, Y, Z) trong game.
-    *   DÃ¹ng cÃ´ng thá»©c **WorldToScreen** (biáº¿n Ä‘á»•i ma tráº­n ViewMatrix) Ä‘á»ƒ Ä‘á»•i tá»a Ä‘á»™ 3D thÃ nh tá»a Ä‘á»™ 2D trÃªn mÃ n hÃ¬nh (Pixel X, Pixel Y).
-    *   Váº½ hÃ¬nh chá»¯ nháº­t táº¡i (Pixel X, Pixel Y).
-
-**[BÃ i Táº­p]:**
-1.  BiÃªn dá»‹ch `Trainer.cpp`.
-2.  Cháº¡y `DummyGame.exe`.
-3.  Láº¥y Ä‘á»‹a chá»‰ MÃ¡u tá»« Cheat Engine.
-4.  Nháº­p vÃ o Trainer vÃ  báº¥m F1 xem mÃ¡u cÃ³ nháº£y lÃªn 999 khÃ´ng.
-
+## 🛑 NHIỆM VỤ (TOP SECRET)
+1.  Code lại ví dụ trên.
+2.  Thay địa chỉ `healthAddr` đúng với máy của bạn.
+3.  Chạy Trainer và bấm **F1** để xem `DummyGame` có hồi máu không.
+4.  **Thử thách:** Thêm tính năng Hack Ammo (Đạn) vào phím **F2**.
 
 ---
 
-# ChÆ°Æ¡ng 4: Láº­p TrÃ¬nh Hack Internal (Ná»™i Khoa) ðŸ©º
+[Tiếp theo: Chương 4 - Internal Hacking (Tiêm DLL - Kỹ thuật thượng thừa)](../04_Lap_Trinh_Internal/README.md)
 
-*"Nguy hiá»ƒm hÆ¡n, máº¡nh máº½ hÆ¡n, nhanh hÆ¡n."*
 
-External hack pháº£i xin phÃ©p HÄH Ä‘á»ƒ Ä‘á»c RAM (`ReadProcessMemory` ráº¥t cháº­m).
-Internal hack cháº¡y **ngay trong dÃ²ng mÃ¡u cá»§a game**. NÃ³ cÃ³ thá»ƒ truy cáº­p má»i thá»© khÃ´ng giá»›i háº¡n.
+<div style="page-break-after: always;"></div>
 
----
+# 💉 Chương 4: Internal Hacking (Gián Điệp Kiểu Mẫu)
 
-## 4.1. DLL Injection (TiÃªm Thuá»‘c Äá»™c)
-File `.exe` khÃ´ng thá»ƒ cháº¡y trong bá»™ nhá»› cá»§a tiáº¿n trÃ¬nh khÃ¡c. NhÆ°ng file `.dll` (Dynamic Link Library) thÃ¬ cÃ³ thá»ƒ.
-Ká»¹ thuáº­t **DLL Injection** buá»™c game pháº£i náº¡p file DLL cá»§a mÃ¬nh vÃ o. Khi náº¡p xong, hÃ m `DllMain` cá»§a DLL sáº½ cháº¡y -> Hack kÃ­ch hoáº¡t.
-
-### CÃ¡c cÃ¡ch Inject
-1.  **LoadLibrary (Cá»• Ä‘iá»ƒn):**
-    *   Táº¡o má»™t Thread trong game (`CreateRemoteThread`).
-    *   Báº¯t Thread Ä‘Ã³ gá»i hÃ m `LoadLibraryA("Hack.dll")`.
-    *   *NhÆ°á»£c Ä‘iá»ƒm:* Game dá»… dÃ ng phÃ¡t hiá»‡n vÃ¬ DLL náº±m trong danh sÃ¡ch Module (PEB Ldr).
-2.  **Manual Mapping (Cao cáº¥p):**
-    *   Tá»± Ä‘á»c file DLL tá»« Ä‘Ä©a.
-    *   Tá»± giáº£i mÃ£ vÃ  copy tá»«ng pháº§n (Header, Sections) vÃ o bá»™ nhá»› game.
-    *   Tá»± xá»­ lÃ½ Relocation vÃ  Import Table.
-    *   *Æ¯u Ä‘iá»ƒm:* DLL khÃ´ng Ä‘Äƒng kÃ½ vá»›i Windows -> TÃ ng hÃ¬nh. (Cheat Engine cÅ©ng dÃ¹ng cÃ¡ch nÃ y).
+> *"External Hacker giống như lính bắn tỉa: An toàn nhưng bị giới hạn. Internal Hacker giống như điệp viên: Nguy hiểm, nằm ngay trong lòng địch, nhưng quyền lực là vô hạn."*
 
 ---
 
-## 4.2. Function Hooking (MÃ³c HÃ m) - TrÃ¡i tim cá»§a Internal
-Khi báº¡n á»Ÿ bÃªn trong, báº¡n cÃ³ thá»ƒ thay Ä‘á»•i cÃ¡ch game hoáº¡t Ä‘á»™ng.
-VÃ­ dá»¥: HÃ m `TakeDamage(int dmg)` cá»§a game.
-ChÃºng ta sáº½ **Hook** nÃ³: Khi game gá»i `TakeDamage`, nÃ³ sáº½ nháº£y sang hÃ m `MyTakeDamage` cá»§a ta.
+## 🛑 SỨ MỆNH (MISSION BRIEFING)
+Ở Chương 3, bạn đã làm Trainer External. Nhưng External có điểm yếu:
+1.  **Chậm:** Phải dùng `ReadProcessMemory` liên tục (giao tiếp giữa 2 process tốn thời gian).
+2.  **Hạn chế:** Không thể vẽ Menu lên màn hình game (ESP), không thể sửa đổi logic game phức tạp (Hook).
 
-### Code máº«u Hook (DÃ¹ng thÆ° viá»‡n MinHook)
+Giải pháp: **Internal Hacking**.
+Chúng ta sẽ không đứng ngoài nữa. Chúng ta sẽ chui tọt vào bên trong Game.
+
+**Mục tiêu:**
+1.  Hiểu cơ chế **DLL Injection** (Tiêm thuốc độc).
+2.  Tự viết một **Injector** đơn giản.
+3.  Tự viết một **DLL Hack** đầu tiên (MessageBox "Hello World" từ bên trong Game).
+
+---
+
+## 4.1. Giải Phẫu DLL Injection 🧬
+Làm thế nào để nhét code của mình (C++) vào trong file Game (`.exe`) đang chạy mà không cần source code game?
+Windows cung cấp một cửa hậu: **LoadLibrary**.
+
+![DLL Injection Diagram](04_Lap_Trinh_Internal/images/dll_injection.png)
+
+1.  **Injector (Bác sĩ):** Tool do chúng ta viết.
+2.  **Target (Bệnh nhân):** Game process.
+3.  **DLL (Thuốc):** Code hack của chúng ta, được biên dịch thành file `.dll` (Dynamic Link Library).
+
+**Quy trình tiêm:**
+Injector sẽ dùng quyền Admin, trỏ súng vào đầu Game và ra lệnh: *"Ê, tao vừa copy cái file `hack.dll` vào bộ nhớ của mày đấy. Chạy nó ngay cho tao!"* (thông qua hàm `CreateRemoteThread`).
+
+---
+
+## 4.2. Chế Tạo Thuốc (DLL Payload) 💊
+Tạo Project mới trong Visual Studio: `Dynamic-Link Library (DLL)`.
+
+**Code `dllmain.cpp`:**
+Đây là nơi code sẽ chạy ngay lập tức khi tiêm thành công.
+
 ```cpp
-#include <Windows.h>
-#include "MinHook.h" // ThÆ° viá»‡n Hook ná»•i tiáº¿ng (Github: TsudaKageyu/minhook)
+#include <windows.h>
+#include <iostream>
 
-// 1. Äá»‹nh nghÄ©a khuÃ´n máº«u hÃ m gá»‘c
-typedef void (__stdcall *TakeDamage_t)(void* player, int dmg);
-TakeDamage_t oTakeDamage = nullptr; // Chá»— lÆ°u hÃ m gá»‘c (Gateway)
+// Luồng hack chính (Chạy song song với Game)
+DWORD WINAPI HackThread(LPVOID lpParam) {
+    // 1. Mở Console để debug (Sướng hơn External nhiều!)
+    AllocConsole();
+    FILE* f;
+    freopen_s(&f, "CONOUT$", "w", stdout);
 
-// 2. HÃ m giáº£ cá»§a mÃ¬nh
-void __stdcall hkTakeDamage(void* player, int dmg) {
-    if (IsMyPlayer(player)) {
-        dmg = 0; // GOD MODE: Náº¿u lÃ  mÃ¬nh thÃ¬ dmg = 0
-    } else {
-        dmg = 9999; // ONE HIT: Náº¿u lÃ  Ä‘á»‹ch thÃ¬ dmg = 9999
+    std::cout << ">>> INTERNAL HACK INJECTED! <<<" << std::endl;
+    std::cout << "Ban dang o trong long dich (In-Process Memory)." << std::endl;
+    std::cout << "Base Address: 0x" << std::hex << (uintptr_t)GetModuleHandle(NULL) << std::endl;
+
+    // 2. Hack Loop (Truy cập trực tiếp, không cần ReadProcessMemory!)
+    // Giả sử địa chỉ Máu là con trỏ: 0x123456 (Thay cái này bằng Pointer xịn nhé)
+    int* pHealth = (int*)0x00EFF690; 
+
+    while (true) {
+        if (GetAsyncKeyState(VK_END) & 1) { // Bấm END để thoát
+            break;
+        }
+
+        if (GetAsyncKeyState(VK_F1) & 1) {
+            *pHealth = 9999; // Gán trực tiếp! Siêu nhanh!
+            std::cout << "[!] Health set to 9999" << std::endl;
+        }
+        
+        Sleep(10);
     }
 
-    // Gá»i láº¡i hÃ m gá»‘c Ä‘á»ƒ game khÃ´ng crash (nhÆ°ng vá»›i dmg Ä‘Ã£ sá»­a)
-    return oTakeDamage(player, dmg);
+    // 3. Dọn dẹp & Rút quân
+    fclose(f);
+    FreeConsole();
+    FreeLibraryAndExitThread((HMODULE)lpParam, 0);
+    return 0;
 }
 
-// 3. Main Thread (Cháº¡y khi Inject)
-DWORD WINAPI MainThread(LPVOID lpParam) {
-    MH_Initialize(); // Khá»Ÿi táº¡o thÆ° viá»‡n
+// Cửa ngõ của DLL
+BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved) {
+    switch (ul_reason_for_call) {
+    case DLL_PROCESS_ATTACH:
+        // Khi vừa tiêm vào, tạo ngay 1 luồng riêng để chạy hack
+        CreateThread(nullptr, 0, HackThread, hModule, 0, nullptr);
+        break;
+    case DLL_PROCESS_DETACH:
+        break;
+    }
+    return TRUE;
+}
+```
 
-    // Äá»‹a chá»‰ hÃ m gá»‘c (TÃ¬m báº±ng IDA Pro hoáº·c SigScan)
-    uintptr_t funcAddr = 0x0045A2B0; 
+---
 
-    // Táº¡o Hook
-    MH_CreateHook((void*)funcAddr, &hkTakeDamage, (void**)&oTakeDamage);
+## 4.3. Chế Tạo Kim Tiêm (The Injector) 💉
+Tạo Project mới: `Console App (C++)`.
+
+```cpp
+#include <iostream>
+#include <windows.h>
+#include <TlHelp32.h>
+
+// Hàm lấy PID theo tên Game
+DWORD GetProcId(const char* procName) {
+    DWORD procId = 0;
+    HANDLE hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    if (hSnap != INVALID_HANDLE_VALUE) {
+        PROCESSENTRY32 procEntry;
+        procEntry.dwSize = sizeof(procEntry);
+        if (Process32First(hSnap, &procEntry)) {
+            do {
+                if (!_stricmp(procEntry.szExeFile, procName)) {
+                    procId = procEntry.th32ProcessID;
+                    break;
+                }
+            } while (Process32Next(hSnap, &procEntry));
+        }
+    }
+    CloseHandle(hSnap);
+    return procId;
+}
+
+int main() {
+    const char* dllPath = "D:\\MyHacks\\SimpleHack.dll"; // Sửa đường dẫn này!
+    const char* procName = "DummyGame.exe";
     
-    // KÃ­ch hoáº¡t
-    MH_EnableHook(MH_ALL_HOOKS);
+    // 1. Lấy PID
+    DWORD procId = 0;
+    while (!procId) {
+        procId = GetProcId(procName);
+        std::cout << "Waiting for game..." << std::endl;
+        Sleep(1000);
+    }
 
+    // 2. Mở Process
+    HANDLE hProc = OpenProcess(PROCESS_ALL_ACCESS, 0, procId);
+    if (hProc && hProc != INVALID_HANDLE_VALUE) {
+        // 3. Cấp phát bộ nhớ trong Game để chứa đường dẫn DLL
+        void* loc = VirtualAllocEx(hProc, 0, MAX_PATH, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+        
+        // 4. Ghi đường dẫn DLL vào đó
+        WriteProcessMemory(hProc, loc, dllPath, strlen(dllPath) + 1, 0);
+        
+        // 5. Ép Game gọi LoadLibraryA để load DLL
+        CreateRemoteThread(hProc, 0, 0, (LPTHREAD_START_ROUTINE)LoadLibraryA, loc, 0, 0);
+        
+        std::cout << ">>> INJECTED SUCCESSFULLY! <<<" << std::endl;
+        CloseHandle(hProc);
+    }
     return 0;
 }
 ```
 
 ---
 
-## 4.3. Menu ImGui (Giao diá»‡n Hack)
-Háº§u háº¿t menu hack Ä‘áº¹p lung linh báº¡n tháº¥y (CS2, Valorant) Ä‘á»u dÃ¹ng thÆ° viá»‡n **ImGui**.
-Äá»ƒ váº½ Ä‘Æ°á»£c menu trong game, báº¡n pháº£i Hook vÃ o cÃ¡c hÃ m Ä‘á»“ há»a:
-*   **DirectX 9:** Hook `EndScene`.
-*   **DirectX 11:** Hook `Present`.
-*   **OpenGL:** Hook `wglSwapBuffers`.
+## 4.4. Hooking - Nghệ Thuật Đánh Tráo (Advanced) 🎣
+Tiêm được DLL vào rồi thì làm gì? Hack máu chỉ là trò trẻ con.
+Cao thủ sẽ dùng **Hooking**.
 
-Khi hook thÃ nh cÃ´ng, má»—i khung hÃ¬nh (frame) game váº½ ra, báº¡n chÃ¨n thÃªm lá»‡nh váº½ Menu cá»§a mÃ¬nh vÃ o trÆ°á»›c khi nÃ³ hiá»‡n lÃªn mÃ n hÃ¬nh.
+**Nguyên lý:**
+Game có hàm `DrawPlayer()`. 
+Hacker sẽ sửa code của hàm đó, chèn thêm lệnh `DrawBox()` của mình vào.
+-> Kết quả: Game vừa vẽ nhân vật, vừa vẽ thêm cái khung hình chữ nhật bao quanh (Wallhack/ESP).
 
-**[BÃ i Táº­p Lá»›n]:** 
-Táº£i source code "Csgo-Simple" trÃªn Github. ÄÃ¢y lÃ  base hack CS:GO ná»•i tiáº¿ng nháº¥t. Äá»c hiá»ƒu cÃ¡ch nÃ³ Hook `CreateMove` Ä‘á»ƒ lÃ m Aimbot vÃ  BunnyHop.
-
+Thư viện nổi tiếng nhất: **MinHook**. (Chúng ta sẽ học sâu ở chương sau).
 
 ---
 
-# ChÆ°Æ¡ng 5: Mobile Hacking (Android Specs) ðŸ“±
-
-*"Thá»‹ trÆ°á»ng tá»· Ä‘Ã´, báº£o máº­t lá»ng láº»o."*
-
-Game Mobile (Android) khÃ¡c PC á»Ÿ chá»—: NÃ³ cháº¡y trÃªn mÃ¡y áº£o Java (Dalvik/ART) nhÆ°ng cÃ¡c game xá»‹n (Unity, Unreal, Cocos) láº¡i cháº¡y Native C++.
-
----
-
-## 5.1. Giáº£i Pháº«u APK
-APK = File ZIP Ä‘á»•i Ä‘uÃ´i.
-1.  **classes.dex:** Code Java/Kotlin. (Logic UI, ÄÄƒng nháº­p). DÃ¹ng `JD-GUI` hoáº·c `JADX` Ä‘á»ƒ xem.
-2.  **lib/arm64-v8a/libIL2CPP.so** (Unity) hoáº·c **libcocos2djs.so** (Cocos): TrÃ¡i tim cá»§a game. Code C++ náº±m á»Ÿ Ä‘Ã¢y.
-3.  **assets/bin/Data:** Dá»¯ liá»‡u game (Unity).
+## 🛑 NHIỆM VỤ (MISSION)
+1.  Build file `.dll` hack (nhớ chọn đúng x86/x64 khớp với game).
+2.  Build file `.exe` injector.
+3.  Chạy Game -> Chạy Injector.
+4.  Nếu thấy cửa sổ Console đen hiện lên **bên trong game** -> Chúc mừng, bạn đã trở thành Internal Hacker!
 
 ---
 
-## 5.2. CÃ´ng Cá»¥ Chiáº¿n Äáº¥u (Mobile)
-1.  **APKTool:**
-    *   Decompile: `apktool d game.apk` -> Ra folder chá»©a code `smali`.
-    *   Recompile: `apktool b folder` -> ÄÃ³ng gÃ³i láº¡i thÃ nh APK.
-    *   *Smali:* NgÃ´n ngá»¯ Assembly cá»§a Android Java. KhÃ³ Ä‘á»c nhÆ°ng sá»­a Ä‘Æ°á»£c.
-2.  **Frida (Vua cá»§a Mobile Hack):**
-    *   CÃ´ng cá»¥ Dynamic Instrumentation.
-    *   Cho phÃ©p viáº¿t script JavaScript trÃªn PC, tiÃªm tháº³ng vÃ o game trÃªn Ä‘iá»‡n thoáº¡i Ä‘á»ƒ Hook hÃ m Java hoáº·c Native.
-    *   **VÃ­ dá»¥ Hook Java (Bypass Root Check):**
-        ```js
-        Java.perform(function() {
-            var RootParams = Java.use("com.security.CheckRoot");
-            RootParams.isRooted.implementation = function() {
-                console.log("Game hoi may co Root ko -> Tra loi: KHONG");
-                return false;
-            };
-        });
-        ```
-3.  **Il2CppDumper (Cho Unity):**
-    *   Game Unity biÃªn dá»‹ch ra C++, lÃ m máº¥t tÃªn hÃ m.
-    *   Tool nÃ y dÃ¹ng file `global-metadata.dat` Ä‘á»ƒ khÃ´i phá»¥c láº¡i tÃªn hÃ m vÃ  Ä‘á»‹a chá»‰ (Offset) cho báº¡n mod.
+[Tiếp theo: Chương 5 - Mobile Hacking (Android/iOS)](../05_Mobile_Hacking/README.md)
+
+
+<div style="page-break-after: always;"></div>
+
+# 📱 Chương 5: Mobile Hacking (Chiến Trường Bỏ Túi)
+
+> *"PC là pháo đài. Mobile là chiến trường du kích. Nhỏ hơn, chật hẹp hơn, nhưng khốc liệt gấp đôi."*
 
 ---
 
-## 5.3. Quy trÃ¬nh Mod Menu Android (Lib Modding)
-ÄÃ¢y lÃ  cÃ¡ch táº¡o ra cÃ¡c báº£n "Hack Map LiÃªn QuÃ¢n" hay "Free Fire Aimbot".
-1.  Láº¥y Ä‘á»‹a chá»‰ Offset cÃ¡c hÃ m quan trá»ng (VD: `get_EnemyVisible` táº¡i `0x123456`) báº±ng IDA Pro.
-2.  Viáº¿t má»™t file `.so` riÃªng (C++).
-3.  Hook hÃ m `0x123456` cá»§a game báº±ng ká»¹ thuáº­t **Inline Hook** trÃªn ARM64.
-4.  Chá»‰nh sá»­a file `AndroidManifest.xml` hoáº·c dÃ¹ng `LGL Mod Menu` Ä‘á»ƒ load file `.so` hack cá»§a mÃ¬nh trÆ°á»›c khi game cháº¡y.
+## 🛑 SỨ MỆNH (MISSION BRIEFING)
+Thời đại của PC vẫn còn đó, nhưng Mobile mới là mỏ vàng (PUBG Mobile, Liên Quân, Free Fire).
+Hack trên mobile có 2 trường phái:
+1.  **Non-Root (Mod Menu):** Sửa file `.apk`/`.ipa` rồi cài lại. Dành cho người dùng phổ thông.
+2.  **Root/Jailbreak:** Can thiệp sâu vào hệ thống, dùng GameGuardian hoặc Tweak. Dành cho Hacker thực thụ.
 
-**[Thá»±c HÃ nh Dá»± Ãn Bida]:**
-*   **Váº¥n Ä‘á»:** Cocos2d-x dÃ¹ng JavaScript (`main.js`) nhÆ°ng mÃ£ hÃ³a thÃ nh Binary (`.jsc`).
-*   **Giáº£i phÃ¡p:**
-    1.  TÃ¬m Key giáº£i mÃ£ XXTEA trong `libcocos2djs.so`.
-    2.  Giáº£i mÃ£ `main.jsc` -> `main.js`.
-    3.  ChÃ¨n code váº½ Line (Laser).
-    4.  MÃ£ hÃ³a láº¡i vÃ  Ä‘Ã³ng gÃ³i vÃ o APK.
-
-[Tiáº¿p theo: ChÆ°Æ¡ng 6 - Reverse Engineering Advanced](../06_Reverse_Engineering_Advanced/README.md)
-
+**Mục tiêu:**
+1.  Hiểu kiến trúc **ARM** (Khác hoàn toàn x86 trên PC).
+2.  Làm chủ **GameGuardian** (Cheat Engine phiên bản Mobile).
+3.  Làm quen với **Frida** (Vua của Dynamic Instrumentation).
 
 ---
 
-# ChÆ°Æ¡ng 6: Reverse Engineering Advanced (PhÃ¢n TÃ­ch ChuyÃªn SÃ¢u) ðŸ”¬
+## 5.1. Chiến Trường Mobile (The Architecture) 🗺️
+Khác với PC (dùng chip Intel/AMD x86), điện thoại dùng chip **ARM** (Advanced RISC Machine).
+Tập lệnh Assembly của nó khác. Cách quản lý bộ nhớ cũng khác.
 
-*"Code lÃ  sá»± tháº­t tráº§n trá»¥i."*
+![Mobile Architecture Diagram](05_Mobile_Hacking/images/mobile_arch.png)
 
-Khi báº¡n Ä‘á»‘i máº·t vá»›i Game 3A hoáº·c Anti-Cheat, code khÃ´ng cÃ²n lÃ  C++ trong sÃ¡ng ná»¯a. NÃ³ Ä‘Ã£ bá»‹ nÃ©n, mÃ£ hÃ³a, lÃ m rá»‘i. á»ž Ä‘Ã¢y, **IDA Pro** lÃ  ngÆ°á»i báº¡n thÃ¢n nháº¥t.
-
----
-
-## 6.1. IDA Pro - The Disassembler
-IDA (Interactive Disassembler) biáº¿n mÃ£ mÃ¡y (`0x55 0x8B...`) thÃ nh Assembly vÃ  giáº£ mÃ£ C.
-
-### CÃ¡c PhÃ­m Táº¯t Buá»™c Pháº£i Nhá»›:
-*   **Space:** Chuyá»ƒn Ä‘á»•i giá»¯a cháº¿ Ä‘á»™ Text (Code) vÃ  Graph (SÆ¡ Ä‘á»“ khá»‘i). LuÃ´n dÃ¹ng Graph Ä‘á»ƒ dá»… nhÃ¬n logic `IF/ELSE`.
-*   **F5 (Decompile):** Tháº§n thÃ¡nh. Biáº¿n Assembly khÃ³ hiá»ƒu thÃ nh code C dá»… hiá»ƒu.
-*   **X (Xref):** TÃ¬m xem hÃ m nÃ y Ä‘Æ°á»£c ai gá»i. VÃ­ dá»¥: Báº¡n tÃ¬m tháº¥y chuá»—i "Cheat Detect!", báº¥m X Ä‘á»ƒ xem hÃ m nÃ o in ra dÃ²ng Ä‘Ã³ -> ÄÃ³ chÃ­nh lÃ  hÃ m Anti-Cheat.
-*   **N (Name):** Äá»•i tÃªn hÃ m/biáº¿n. Äá»«ng Ä‘á»ƒ `sub_401000`, hÃ£y Ä‘á»•i thÃ nh `Check_Health`.
+*   **Root (Android) / Jailbreak (iOS):** Điều kiện tiên quyết để can thiệp sâu. Nếu không có quyền này, bạn chỉ là "khách" trên chính thiết bị của mình.
+*   **GameGuardian (GG):** Một ứng dụng nhưng lại có quyền truy cập RAM của ứng dụng khác (Game). Nó hoạt động y hệt Cheat Engine.
+*   **Server-Side Check:** Game Mobile thường online 100%. Hack Máu/Tiền thường là **Fake** (chỉ mình thấy, server không nhận). Hack Tọa độ/Wallhack/Aimbot (Client-side) mới là chân ái.
 
 ---
 
-## 6.2. PhÃ¢n TÃ­ch Cáº¥u TrÃºc (Reconstructing Structs)
-Trong code C giáº£ láº­p (F5), báº¡n sáº½ tháº¥y ráº¥t nhiá»u `*(_DWORD *)(a1 + 404)`.
-*   `a1`: LÃ  con trá» `Player`.
-*   `404` (0x194): LÃ  Offset.
-*   IDA khÃ´ng biáº¿t `404` lÃ  gÃ¬. Báº¡n pháº£i nÃ³i cho nÃ³ biáº¿t.
+## 5.2. GameGuardian - Vũ Khí Du Kích 👾
+Đây là công cụ mạnh nhất trên Android.
 
-**Quy trÃ¬nh:**
-1.  VÃ o tab **Structures** (Shift + F9).
-2.  Táº¡o Struct má»›i `PlayerStruct`.
-3.  ThÃªm cÃ¡c thÃ nh pháº§n (Member) vÃ o cho Ä‘áº¿n khi Ä‘á»§ 404 byte.
-4.  Quay láº¡i cá»­a sá»• code, chuá»™t pháº£i vÃ o `a1`, chá»n **Convert to struct pointer** -> `PlayerStruct*`.
-5.  Code sáº½ tá»± Ä‘á»™ng Ä‘á»•i thÃ nh `Player->Health`. Äáº¹p nhÆ° mÆ¡!
+**Quy trình tác chiến:**
+1.  **Select Process:** Chọn game đang chạy (Lưu ý: Game mobile hay có nhiều process con, chọn cái nào nặng MB nhất).
+2.  **Select Memory Range:** Chọn `Ca` (C++ alloc) và `A` (Anonymous). Đây là nơi chứa dữ liệu Game (Heap). Bỏ qua `Video`, `Code App`.
+3.  **Search:**
+    *   **Dword:** Máu, Đạn.
+    *   **Float:** Tọa độ (X, Y, Z).
+    *   **Encrypted (Xor):** Nhiều game mã hóa giá trị (VD: Máu thật là 100, nhưng trong RAM nó lưu là `100 ^ Key`). GG có chế độ Search Encrypted để tự dò Key.
 
----
-
-## 6.3. Unpacking (Gá»¡ Rá»‘i & Giáº£i NÃ©n)
-Game Ä‘á»ƒ trÃ¡nh bá»‹ crack thÆ°á»ng dÃ¹ng Packer (UPX, Themida, VMProtect).
-Packer lÃ m 2 viá»‡c: NÃ©n file exe nhá» láº¡i vÃ  MÃ£ hÃ³a code.
-Khi cháº¡y, Packer sáº½ tá»± giáº£i nÃ©n code tháº­t vÃ o RAM rá»“i má»›i nháº£y (Jump) Ä‘áº¿n code tháº­t (OEP - Original Entry Point).
-
-**Ká»¹ thuáº­t Dump:**
-1.  DÃ¹ng **x64dbg** cháº¡y game.
-2.  Äá»ƒ game cháº¡y Ä‘áº¿n OEP (LÃºc Ä‘Ã£ giáº£i nÃ©n xong).
-3.  DÃ¹ng plugin **Scylla** Ä‘á»ƒ "chá»¥p áº£nh" (Dump) vÃ¹ng nhá»› chá»©a code tháº­t ra file.
-4.  Sá»­a láº¡i báº£ng IAT (Import Address Table) Ä‘á»ƒ file dump cháº¡y Ä‘Æ°á»£c.
+**Scripting (Lua):**
+GameGuardian hỗ trợ viết script bằng **Lua**. Bạn có thể viết một script tự động:
+*   Tìm địa chỉ máu.
+*   Sửa thành 9999.
+*   Vẽ menu UI đơn giản ngay trên màn hình game.
 
 ---
 
-## 6.4. TÃ¬m Key MÃ£ HÃ³a (Encryption Keys)
-Game dÃ¹ng Crypto (MÃ£ hÃ³a) Ä‘á»ƒ báº£o vá»‡ Save game, Packet máº¡ng.
-*   **HÃ m chuáº©n:** TÃ¬m cÃ¡c hÃ m thÆ° viá»‡n nhÆ° `AES_Encrypt`, `XOR`.
-*   **Háº±ng sá»‘ Ä‘áº·c trÆ°ng:** Má»—i thuáº­t toÃ¡n cÃ³ cÃ¡c con sá»‘ Ä‘áº·c trÆ°ng (Magic Constants).
-    *   MD5: `0x67452301`...
-    *   AES: S-Box table.
-    *   TEA: `0x9E3779B9` (Golden Ratio).
-*   DÃ¹ng plugin **FindCrypt** trong IDA Ä‘á»ƒ tá»± Ä‘á»™ng quÃ©t cÃ¡c háº±ng sá»‘ nÃ y -> Ra ngay thuáº­t toÃ¡n.
+## 5.3. Modding APK/IPA (Phẫu Thuật Thẩm Mỹ) 💉
+Nếu không muốn Root máy, bạn phải sửa file cài đặt.
 
-[Tiáº¿p theo: ChÆ°Æ¡ng 7 - Networking](../07_Networking_Packet_Hacking/README.md)
+**Android (APK):**
+1.  **Decompile:** Dùng `APKTool` để bung file `.apk` ra thành code `Smali` (một dạng Assembly của Java) và tài nguyên.
+2.  **Inject Lib:** Chép file `hack.so` (C++) của mình vào thư mục `lib/`.
+3.  **Hook Load:** Sửa file `MainActivity.smali` để gọi lệnh `System.loadLibrary("hack")` khi khởi động.
+4.  **Recompile & Sign:** Đóng gói lại thành APK mới và ký chữ ký số (Sign).
 
-
----
-
-# ChÆ°Æ¡ng 7: Networking & Packet Hacking (Hack Máº¡ng) ðŸŒ
-
-*"Äá»«ng tin Client. Server má»›i lÃ  ChÃºa."*
-
-Trong game Online (MMORPG, FPS), má»i thá»© báº¡n tháº¥y trÃªn mÃ n hÃ¬nh chá»‰ lÃ  áº£o áº£nh. Server náº¯m giá»¯ sá»± tháº­t. Hack RAM (Client-side) chá»‰ cÃ³ tÃ¡c dá»¥ng cá»¥c bá»™.
-Muá»‘n hack vÃ ng, item? Báº¡n pháº£i lá»«a Server.
+**iOS (IPA):**
+1.  Tương tự nhưng phức tạp hơn vì cơ chế bảo mật của Apple cực gắt.
+2.  Thường dùng **Theos** để viết Tweak (`.dylib`) rồi tiêm vào IPA bằng `Azule` hoặc `Sideloadly`.
 
 ---
 
-## 7.1. Giao Thá»©c Máº¡ng Game (Game Protocol)
-Game thÆ°á»ng dÃ¹ng:
-*   **TCP:** Cho Chat, ÄÄƒng nháº­p, Giao dá»‹ch (Cáº§n tin cáº­y, khÃ´ng máº¥t gÃ³i).
-*   **UDP:** Cho di chuyá»ƒn, báº¯n sÃºng (Cáº§n tá»‘c Ä‘á»™, máº¥t 1-2 gÃ³i khÃ´ng sao).
+## 5.4. Frida - Vua Của Dynamic Hacking 👑
+Nếu PC có Cheat Engine, thì Mobile có **Frida**.
+Nó cho phép bạn viết code **JavaScript** trên PC để điều khiển logic game trên điện thoại theo thời gian thực (qua cáp USB).
 
-GÃ³i tin (Packet) thÆ°á»ng cÃ³ cáº¥u trÃºc:
-`[Header (Äá»™ dÃ i, Loáº¡i gÃ³i)] + [Body (Dá»¯ liá»‡u Ä‘Ã£ mÃ£ hÃ³a)]`
-
----
-
-## 7.2. Wireshark & PhÃ¢n TÃ­ch GÃ³i Tin
-Wireshark giÃºp báº¡n báº¯t táº¥t cáº£ gÃ³i tin ra/vÃ o card máº¡ng.
-Tuy nhiÃªn, dá»¯ liá»‡u thÆ°á»ng bá»‹ mÃ£ hÃ³a (hiá»‡n toÃ n rÃ¡c).
-**Nhiá»‡m vá»¥:** TÃ¬m cáº¥u trÃºc gÃ³i tin.
-VÃ­ dá»¥: Báº¡n Ä‘i 1 bÆ°á»›c. GÃ³i tin dÃ i 20 byte gá»­i Ä‘i.
-Báº¡n Ä‘i 2 bÆ°á»›c. GÃ³i tin dÃ i 20 byte gá»­i Ä‘i, chá»‰ khÃ¡c byte sá»‘ 5.
--> Byte sá»‘ 5 lÃ  Tá»a Ä‘á»™.
-
----
-
-## 7.3. WPE Pro & MitM (Man-in-the-Middle)
-WPE Pro (hoáº·c cÃ¡c tool hiá»‡n Ä‘áº¡i nhÆ° **Echo Mirage**) cho phÃ©p báº¡n Ä‘á»©ng giá»¯a Game vÃ  Server.
-1.  **Filter (Bá»™ lá»c):** Tá»± Ä‘á»™ng thay Ä‘á»•i gÃ³i tin.
-    *   VÃ­ dá»¥: Má»—i khi game gá»­i gÃ³i tin "Mua MÃ¡u (ID: 01)", WPE tá»± sá»­a thÃ nh "Mua Kiáº¿m Rá»“ng (ID: 99)".
-2.  **Send (Gá»­i láº¡i):** Ghi Ã¢m láº¡i gÃ³i tin "Nháº­n thÆ°á»Ÿng nhiá»‡m vá»¥" vÃ  gá»­i láº¡i nÃ³ 1000 láº§n (Exploit).
+**Ví dụ Script Frida (.js):**
+```javascript
+Java.perform(function() {
+    // Tìm hàm get_Health trong class Player
+    var PlayerClass = Java.use("com.game.Player");
+    
+    PlayerClass.get_Health.implementation = function() {
+        console.log("[Frida] Game đang lấy chỉ số máu...");
+        return 99999; // Trả về máu ảo luôn!
+    };
+});
+```
+-> Chạy script này phát, vào game auto bất tử. Không cần compile lại APK, không cần restart game.
 
 ---
 
-## 7.4. Bypass SSL Pinning (Mobile)
-Game mobile dÃ¹ng HTTPS (SSL) Ä‘á»ƒ báº£o máº­t. NÃ³ cÃ i sáºµn Chá»©ng chá»‰ (Certificate) trong App Ä‘á»ƒ chá»‘ng giáº£ máº¡o.
-Náº¿u báº¡n dÃ¹ng Fiddler/Charles Proxy Ä‘á»ƒ báº¯t gÃ³i tin, game sáº½ bÃ¡o lá»—i máº¡ng.
-**Giáº£i phÃ¡p:** DÃ¹ng **Frida** + Script `ssl-pinning-bypass.js`.
-Script nÃ y sáº½ Hook vÃ o hÃ m kiá»ƒm tra chá»©ng chá»‰ cá»§a Android vÃ  luÃ´n tráº£ vá» `True`.
-
-**[BÃ i Táº­p]:**
-Táº£i game web Ä‘Æ¡n giáº£n hoáº·c game private server cÅ© (khÃ´ng mÃ£ hÃ³a máº¡nh). DÃ¹ng WPE Pro báº¯t gÃ³i tin chat, sá»­a ná»™i dung chat cá»§a mÃ¬nh trÆ°á»›c khi nÃ³ hiá»‡n lÃªn mÃ n hÃ¬nh ngÆ°á»i khÃ¡c.
-
+## 🛑 NHIỆM VỤ (MISSION)
+1.  Cài đặt giả lập **LDPlayer** hoặc **Bluestacks** (đã Root).
+2.  Cài **GameGuardian**.
+3.  Tải một game offline nhẹ (VD: Hill Climb Racing).
+4.  Dùng GameGuardian hack tiền (Coins) trong game đó.
 
 ---
 
-# ChÆ°Æ¡ng 8: Kernel Driver Development (Äá»‰nh Cao Báº£o Máº­t) ðŸ›¡ï¸
+[Tiếp theo: Chương 6 - Reverse Engineering Advanced (Dịch ngược nâng cao)](../06_Reverse_Engineering_Advanced/README.md)
 
-*"Welcome to Ring 0. NÆ¡i má»™t dÃ²ng code sai lÃ m mÃ n hÃ¬nh xanh (BSOD)."*
 
-Táº¡i sao Hacker pháº£i xuá»‘ng Kernel?
-VÃ¬ Anti-Cheat (EAC, Vanguard) Ä‘ang ngá»“i á»Ÿ Ä‘Ã³. Náº¿u báº¡n á»Ÿ User Mode (Ring 3), báº¡n lÃ  dÃ¢n thÆ°á»ng, Anti-Cheat lÃ  Cáº£nh sÃ¡t. Cáº£nh sÃ¡t cÃ³ quyá»n khÃ¡m xÃ©t, báº¯t giá»¯ báº¡n.
-Náº¿u báº¡n xuá»‘ng Kernel (Ring 0), báº¡n lÃ  Äáº·c vá»¥ ngáº§m. Báº¡n ngang hÃ ng hoáº·c cao hÆ¡n Cáº£nh sÃ¡t.
+<div style="page-break-after: always;"></div>
 
----
+# 🧩 Chương 6: Reverse Engineering (Giải Mã Ma Trận)
 
-## 8.1. Kiáº¿n TrÃºc Windows (Ring Levels)
-*   **Ring 3 (User Mode):** á»¨ng dá»¥ng bÃ¬nh thÆ°á»ng. Bá»‹ giá»›i háº¡n bá»Ÿi cÃ¡c hÃ m API. KhÃ´ng thá»ƒ Ä‘á»c RAM cá»§a tiáº¿n trÃ¬nh System.
-*   **Ring 0 (Kernel Mode):** Quyá»n nÄƒng tuyá»‡t Ä‘á»‘i. Truy cáº­p trá»±c tiáº¿p pháº§n cá»©ng, bá»™ nhá»› váº­t lÃ½.
-
-Anti-Cheat dÃ¹ng **ObRegisterCallbacks** trong Kernel Ä‘á»ƒ cháº·n quyá»n `OpenProcess` cá»§a Cheat Engine. ÄÃ³ lÃ  lÃ½ do báº¡n báº­t CE lÃªn nhÆ°ng khÃ´ng attach Ä‘Æ°á»£c vÃ o game.
+> *"Lập trình viên viết Code để tạo ra phần mềm. Reverse Engineer đọc phần mềm để tìm lại Code. Chúng ta là những kẻ đi ngược thời gian."*
 
 ---
 
-## 8.2. Viáº¿t Driver Cheat (.sys)
-Äá»ƒ viáº¿t Driver, báº¡n cáº§n **WDK (Windows Driver Kit)** vÃ  **Visual Studio**.
+## 🛑 SỨ MỆNH (MISSION BRIEFING)
+Đến lúc này, bạn đã biết hack những game đơn giản có sẵn mã nguồn hoặc không bị mã hóa.
+Nhưng thế giới thực khốc liệt hơn nhiều. Game online xịn (PUBG, Valorant) không bao giờ đưa source code cho bạn. Chúng chỉ đưa cho bạn một file `.exe` cục mịch.
 
-### HÃ m quan trá»ng trong Driver:
-1.  `DriverEntry`: HÃ m Main cá»§a Driver.
-2.  `MmCopyVirtualMemory`: HÃ m copy RAM tá»« Process nÃ y sang Process khÃ¡c (ÄÃ¢y lÃ  `ReadProcessMemory` phiÃªn báº£n Kernel).
-3.  `PsLookupProcessByProcessId`: TÃ¬m Process Game trong Kernel.
+Nhiệm vụ của bạn: **Dịch ngược (Reverse)** file `.exe` đó trở lại thành logic mà con người hiểu được, để tìm lỗ hổng.
 
-### Giao tiáº¿p IOCTL
-App Hack (Client) á»Ÿ User Mode khÃ´ng thá»ƒ gá»i hÃ m Kernel. NÃ³ pháº£i gá»­i "tÃ­n hiá»‡u" qua cá»•ng IOCTL.
-1.  Scanner.exe (User) gá»­i lá»‡nh: `IOCTL_READ_MEMORY` + `Address: 0x123` + `PID: Game`.
-2.  Driver.sys (Kernel) nháº­n lá»‡nh -> Thá»±c hiá»‡n Ä‘á»c RAM -> Tráº£ káº¿t quáº£ vá» Scanner.
+**Mục tiêu:**
+1.  Hiểu quy trình **Disassembly** và **Decompilation**.
+2.  Đọc hiểu sơ đẳng **Assembly (x64)** - Ngôn ngữ mẹ đẻ của CPU.
+3.  Làm quen với **IDA Pro** - "Thánh khí" của giới Reverse.
 
 ---
 
-## 8.3. Load Driver (Váº¥n Ä‘á» Chá»¯ KÃ½)
-Windows 10/11 báº¯t buá»™c má»i Driver pháº£i cÃ³ Chá»¯ kÃ½ sá»‘ (Digital Signature) cá»§a Microsoft (tá»‘n hÃ ng nghÃ¬n $).
-Hacker lÃ¡ch luáº­t báº±ng cÃ¡ch: **KDMapper (Intel Manual Map)**.
-*   Lá»£i dá»¥ng má»™t Driver cÅ© cá»§a Intel/Nvidia/Capcom cÃ³ lá»— há»•ng báº£o máº­t nhÆ°ng cÃ³ chá»¯ kÃ½ xá»‹n.
-*   DÃ¹ng Driver lá»—i Ä‘Ã³ Ä‘á»ƒ "cÃµng" Driver hack cá»§a mÃ¬nh vÃ o Kernel (Manual Map).
-*   Sau khi vÃ o xong, xÃ³a dáº¥u váº¿t cá»§a Driver lá»—i. Driver hack váº«n náº±m trong RAM vÃ  cháº¡y nhÆ°ng khÃ´ng cÃ³ trong danh sÃ¡ch quáº£n lÃ½ cá»§a Windows (Driverless).
+## 6.1. Quy Trình Dịch Ngược (The Pipeline) 🔄
+Máy tính không hiểu C++/C#/Python. Nó chỉ hiểu **Machine Code** (0 và 1).
+Khi lập trình viên bấm "Build", Code C++ sẽ bị xay nát thành Machine Code.
+Reverse Engineering là quá trình cố gắng "ráp" đống vụn vặt đó lại nguyên hình.
+
+![Reverse Engineering Process Diagram](06_Reverse_Engineering_Advanced/images/re_process.png)
+
+*   **Assembly (ASM):** Là bản dịch thô của Machine Code. Rất dài dòng, khó hiểu, nhưng chính xác 100%.
+*   **Pseudocode (C++ giả):** Là phỏng đoán của Tool (IDA Hex-Rays) về logic gốc. Dễ đọc hơn ASM nhiều, nhưng có thể sai.
 
 ---
 
-## 8.4. Bypass Anti-Cheat (CÆ¡ báº£n)
-1.  **Handle Stripping:** Náº¿u tool hack cá»§a báº¡n lá»¡ má»Ÿ Handle vÃ o game, Anti-Cheat sáº½ quÃ©t tháº¥y. Driver cho phÃ©p báº¡n Ä‘á»c/ghi mÃ  khÃ´ng cáº§n má»Ÿ Handle.
-2.  **CR3 Paging:** Anti-Cheat cháº·n truy cáº­p bá»™ nhá»› áº£o? Driver Ä‘á»c tháº³ng Bá»™ nhá»› váº­t lÃ½ (Physical Memory) thÃ´ng qua thanh ghi CR3 (Directory Table Base).
+## 6.2. Nhập Môn Assembly x64 (Ngôn Ngữ Của Chúa) 📜
+Đừng sợ. Bạn không cần phải viết ASM, bạn chỉ cần **đọc hiểu** nó.
 
-**LÆ°u Ã½:** Láº­p trÃ¬nh Kernel cá»±c khÃ³ vÃ  nguy hiá»ƒm. Sai má»™t ly Ä‘i má»™t dáº·m (Blue Screen). HÃ£y test trÃªn MÃ¡y áº£o (VMware) trÆ°á»›c.
+### Các Thanh Ghi (Registers) - "Túi đồ của CPU"
+CPU không có RAM. Nó chỉ có các hộc tủ nhỏ gọi là Register để tính toán cho nhanh.
+*   `RAX`: Thanh ghi chính (Chứa kết quả trả về của hàm, kết quả cộng trừ...).
+*   `RCX, RDX, R8, R9`: Chứa 4 tham số đầu tiên gửi vào hàm (Theo chuẩn Windows x64).
+*   `RIP`: Con trỏ lệnh (Instruction Pointer) - Chỉ vào dòng lệnh sắp chạy tiếp theo. **Hack luồng game là sửa cái này.**
+*   `RSP`: Con trỏ Stack.
 
-[Tiáº¿p theo: ChÆ°Æ¡ng 9 - Anti-Cheat Evasion](../09_AntiCheat_Evasion/README.md)
+### Các Lệnh Cơ Bản (Instructions)
+1.  `MOV A, B` 👉 **Copy**: Chép giá trị B vào A. (A = B)
+2.  `ADD A, B` 👉 **Cộng**: A = A + B.
+3.  `SUB A, B` 👉 **Trừ**: A = A - B.
+4.  `CMP A, B` 👉 **So sánh**: So A với B xem bằng hay lớn hơn.
+5.  `JE Address` 👉 **Nhảy nếu bằng (Jump Equal)**: Nếu phép so sánh trên là Bằng, nhảy tới Address.
+6.  `JNE Address` 👉 **Nhảy nếu không bằng (Jump Not Equal)**.
+7.  `CALL Address` 👉 **Gọi hàm**.
 
+**Ví dụ thực tế:**
+Logic Game (C++):
+```cpp
+if (Health <= 0) {
+    Die();
+}
+```
 
----
+Dịch sang Assembly:
+```asm
+CMP [Health], 0    ; So sánh Máu với 0
+JG  Living         ; Jump Greater: Nếu lớn hơn 0 thì nhảy tới nhãn "Living" (Sống tiếp)
+CALL Die           ; Nếu không nhảy -> Gọi hàm Chết
+Living:
+...
+```
 
-# ChÆ°Æ¡ng 9: Anti-Cheat Evasion (Nghá»‡ Thuáº­t Láº©n Trá»‘n) ðŸ¥·
-
-*"KhÃ´ng pháº£i hack máº¡nh hay yáº¿u. Quan trá»ng lÃ  khÃ´ng bá»‹ báº¯t."*
-
----
-
-## 9.1. CÃ¡c Loáº¡i Anti-Cheat (AC)
-1.  **Server-Side:** (FairFight, VACNet). PhÃ¢n tÃ­ch thá»‘ng kÃª. "Tháº±ng nÃ y báº¯n 100 viÃªn trÃºng Ä‘áº§u cáº£ 100 -> Hack". KhÃ´ng quÃ©t mÃ¡y, chá»‰ quÃ©t dá»¯ liá»‡u.
-2.  **Client-Side:** (BattlEye, EAC, Vanguard). QuÃ©t bá»™ nhá»›, quÃ©t file, quÃ©t tiáº¿n trÃ¬nh Ä‘ang cháº¡y trÃªn mÃ¡y báº¡n.
-
----
-
-## 9.2. Ká»¹ Thuáº­t Bypass Signature (Chá»¯ kÃ½)
-Má»—i báº£n hack public Ä‘á»u cÃ³ má»™t mÃ£ Hash (chá»¯ kÃ½ sá»‘). AC lÆ°u danh sÃ¡ch Ä‘en cÃ¡c chá»¯ kÃ½ nÃ y.
-*   **Váº¥n Ä‘á»:** Báº¡n táº£i hack trÃªn máº¡ng vá», vá»«a báº­t lÃªn lÃ  Äƒn ban ngay. VÃ¬ chá»¯ kÃ½ cá»§a nÃ³ Ä‘Ã£ bá»‹ Ä‘Ã¡nh dáº¥u.
-*   **Giáº£i phÃ¡p:** **Polymorphism (Äa hÃ¬nh) & Junk Code**.
-    *   ThÃªm code rÃ¡c vÃ o source.
-    *   Äá»•i tÃªn hÃ m, Ä‘á»•i thá»© tá»± biáº¿n.
-    *   MÃ£ hÃ³a cÃ¡c chuá»—i string ("Hack Menu" -> "Xjask Lqwe").
-    *   BiÃªn dá»‹ch láº¡i -> Ra file `.exe` hoÃ n toÃ n má»›i vá» máº·t nhá»‹ phÃ¢n -> Bypass Signature Scan.
-
----
-
-## 9.3. Heuristic & Humanization (Giáº£ Láº­p HÃ nh Vi NgÆ°á»i)
-Aimbot dÃ­nh tÃ¢m ngay láº­p tá»©c (Snap) lÃ  hÃ nh vi mÃ¡y.
-*   **Smoothing:** LÃ m cháº­m tá»‘c Ä‘á»™ di chuyá»ƒn tÃ¢m. KÃ©o tá»« tá»« chá»© khÃ´ng nháº£y cÃ³c.
-*   **Randomization:** KhÃ´ng bao giá» báº¯n vÃ o cÃ¹ng má»™t Ä‘iá»ƒm (VD: Giá»¯a Ä‘áº§u). Random báº¯n trÆ°á»£t, báº¯n vÃ o cá»•, vai.
-*   **Curve Path (ÄÆ°á»ng cong):** NgÆ°á»i khÃ´ng bao giá» di chuá»™t theo Ä‘Æ°á»ng tháº³ng táº¯p. Aimbot xá»‹n dÃ¹ng thuáº­t toÃ¡n Bezier Curve Ä‘á»ƒ táº¡o Ä‘Æ°á»ng cong tá»± nhiÃªn.
-
----
-
-## 9.4. HWID Spoofing (Giáº£ Máº¡o Pháº§n Cá»©ng)
-Game ban mÃ¡y tÃ­nh (Hardware Ban) dá»±a trÃªn Serial cá»§a á»” cá»©ng, Mainboard, MAC Address.
-**HWID Spoofer** hoáº¡t Ä‘á»™ng á»Ÿ táº§ng Kernel (Driver):
-*   Hook vÃ o hÃ m há»‡ thá»‘ng `IOCTL_STORAGE_QUERY_PROPERTY`.
-*   Khi game há»i "Sá»‘ serial á»• cá»©ng lÃ  gÃ¬?", Spoofer tráº£ vá» má»™t chuá»—i ngáº«u nhiÃªn.
-*   Game tháº¥y serial má»›i -> TÆ°á»Ÿng lÃ  mÃ¡y má»›i -> Cho chÆ¡i tiáº¿p.
-
-[Tiáº¿p theo: ChÆ°Æ¡ng 10 - Final Projects](../10_Final_Projects/README.md)
-
+> **Mẹo Hack:** Hacker sẽ sửa lệnh `JG` (Jump Greater) thành `JMP` (Jump Always - Luôn luôn nhảy).
+> -> Kết quả: Dù máu = 0 hay -100, game vẫn nhảy tới "Sống tiếp" -> **BẤT TỬ.** 🧛‍♂️
 
 ---
 
-# ChÆ°Æ¡ng 10: Final Projects (Thá»±c Chiáº¿n Tá»‘t Nghiá»‡p) ðŸ†
+## 6.3. IDA Pro - Kính Chiếu Yêu 🧿
+IDA Pro là phần mềm đắt đỏ và mạnh mẽ nhất thế giới RE.
+(Nhưng chắc bạn sẽ dùng bản "thuốc" thôi, tôi biết mà).
 
-*"Há»c Ä‘i Ä‘Ã´i vá»›i hÃ nh. ÄÃ¢y lÃ  lÃºc chá»©ng minh nÄƒng lá»±c."*
-
-HÃ£y chá»n 1 trong 3 Project sau Ä‘á»ƒ lÃ m Ä‘á»“ Ã¡n tá»‘t nghiá»‡p khÃ³a há»c nÃ y.
-
----
-
-## Project A: "The Ghost Sniper" (External PC Hack)
-**Má»¥c tiÃªu:** Viáº¿t External Hack cho game **Counter-Strike 2** (chÆ¡i vá»›i Bot Offline) hoáº·c **Assault Cube**.
-**YÃªu cáº§u:**
-1.  NgÃ´n ngá»¯: C++.
-2.  Chá»©c nÄƒng:
-    *   **Glow ESP:** LÃ m Ä‘á»‹ch phÃ¡t sÃ¡ng xuyÃªn tÆ°á»ng.
-    *   **Triggerbot:** Tá»± Ä‘á»™ng báº¯n khi tÃ¢m ngáº¯m Ä‘i qua Ä‘á»‹ch.
-    *   **BunnyHop:** Tá»± Ä‘á»™ng nháº£y liÃªn tá»¥c.
-3.  **Báº£o máº­t:** Sá»­ dá»¥ng Junk Code Ä‘á»ƒ thay Ä‘á»•i Signature má»—i láº§n biÃªn dá»‹ch.
+**Các phím tắt sinh tồn trong IDA:**
+*   **SPACE:** Chuyển đổi giữa chế độ Text (Code thuần) và Graph (Sơ đồ khối). **Luôn dùng Graph** để dễ nhìn luồng đi (Flowchart).
+*   **F5:** Thần chú! Tự động dịch Assembly sang C++ giả (Pseudocode). Giúp bạn hiểu hàm này làm gì trong 1 nốt nhạc.
+*   **X (Xref):** Tìm xem hàm/biến này được gọi ở đâu. (Ví dụ: Tìm xem chỗ nào gọi hàm `TruTien` để chặn lại).
+*   **N:** Đổi tên hàm/biến (Rename). Đặt tên gợi nhớ (VD: `sub_401000` -> `CheckPassword`) để đỡ bị rối.
 
 ---
 
-## Project B: "Mobile Warlord" (Android Mod Menu)
-**Má»¥c tiÃªu:** Táº¡o Mod Menu APK cho má»™t game Unity Offline (VÃ­ dá»¥: Subway Surfers, Temple Run).
-**YÃªu cáº§u:**
-1.  CÃ´ng cá»¥: Frida hoáº·c liboard (C++ JNI).
-2.  Chá»©c nÄƒng:
-    *   Menu ná»•i (Floating Menu) báº­t táº¯t Ä‘Æ°á»£c.
-    *   Switch: God Mode (Báº¥t tá»­).
-    *   Slider: Chá»‰nh tá»‘c Ä‘á»™ cháº¡y (Speed Hack).
-    *   Button: ThÃªm 1.000.000 VÃ ng.
-3.  Ká»¹ thuáº­t: Pháº£i dÃ¹ng **Il2CppDumper** Ä‘á»ƒ tÃ¬m Offset vÃ  Hook hÃ m trong `libil2cpp.so`.
+## 6.4. Bài Tập Thực Hành (Lab 3) 🕵️
+**Mục tiêu:** Crack chương trình `CrackMe.exe` đơn giản (Tự code hoặc tải trên mạng).
+
+1.  Viết một chương trình C++ nhỏ yêu cầu nhập Password. Nếu đúng in "Success", sai in "Fail".
+2.  Mở file `.exe` đó bằng IDA Pro.
+3.  Tìm chuỗi "Fail" (Shift + F12 để mở bảng Strings).
+4.  Double click vào chuỗi "Fail" để nhảy tới vùng nhớ chứa nó.
+5.  Bấm `X` để xem lệnh nào đang sử dụng chuỗi này.
+6.  Nhìn lên trên lệnh đó, bạn sẽ thấy lệnh `CMP` (So sánh pass) và `JZ/JNZ` (Nhảy).
+7.  **Patch:** Sửa lệnh Nhảy đó để dù nhập sai nó vẫn nhảy vào nhánh "Success".
+    *   (Trong IDA Pro: Edit -> Patch program -> Assemble).
 
 ---
 
-## Project C: "Invisible Driver" (Kernel Level)
-**Má»¥c tiÃªu:** Viáº¿t má»™t Driver Read-Only Ä‘Æ¡n giáº£n.
-**YÃªu cáº§u:**
-1.  NgÃ´n ngá»¯: C (Kernel).
-2.  Chá»©c nÄƒng:
-    *   Nháº­n PID cá»§a Notepad.exe tá»« User Mode.
-    *   Äá»c ná»™i dung vÄƒn báº£n trong Notepad tá»« Kernel.
-    *   áº¨n Driver khá»i danh sÃ¡ch module (Unlink from PsLoadedModuleList).
-3.  Thá»­ nghiá»‡m trÃªn mÃ¡y áº£o Windows 10 (Táº¯t Secure Boot).
+## 6.5. ARM Assembly (Mobile) - Khác Biệt Nhỏ 📱
+Trên Mobile (Android/iOS), chip ARM dùng tập lệnh khác xíu:
+*   `R0 - R15`: Các thanh ghi (Thay vì RAX, RBX).
+*   `MOV`, `ADD`, `SUB`: Giống PC.
+*   `B` (Branch): Giống `JMP` (Nhảy).
+*   `BL` (Branch with Link): Giống `CALL` (Gọi hàm).
+
+Tuy khác tên, nhưng tư duy Logic (So sánh -> Nhảy) là y hệt.
 
 ---
 
-## Lá»i Káº¿t
-ChÃºc má»«ng báº¡n Ä‘Ã£ hoÃ n thÃ nh cuá»‘n sÃ¡ch **[VN] CheatDev Book**.
-Con Ä‘Æ°á»ng phÃ­a trÆ°á»›c lÃ  do báº¡n tá»± Ä‘i. CÃ´ng nghá»‡ thay Ä‘á»•i hÃ ng ngÃ y, game update hÃ ng tuáº§n.
-Chá»‰ cÃ³ tÆ° duy cá»‘t lÃµi vÃ  Ä‘am mÃª tÃ¬m tÃ²i lÃ  khÃ´ng bao giá» lá»—i thá»i.
+[Tiếp theo: Chương 7 - Networking & Packet Hacking (Hack Game Online)](../07_Networking_Packet_Hacking/README.md)
 
-**Happy Hacking!**
-*- Antigravity -*
 
+<div style="page-break-after: always;"></div>
+
+# 📡 Chương 7: Networking & Packet Hacking (Bắt Cóc Tin Nhắn)
+
+> *"Trên PC, RAM là vua. Trên Internet, Packet (Gói tin) là chúa. Ai kiểm soát được Packet, người đó kiểm soát thực tại."*
 
 ---
 
-# ðŸ“– Tá»« Äiá»ƒn Thuáº­t Ngá»¯ (Glossary)
+## 🛑 SỨ MỆNH (MISSION BRIEFING)
+Hack RAM (Client-side) chỉ có tác dụng với những thứ hiển thị trên máy bạn (Wallhack, NoRecoil).
+Nhưng Tiền, Level, Vật phẩm... đều nằm trên **Server**. Bạn sửa RAM máy bạn thành 1 tỷ vàng, Server nó cười vào mặt bạn rồi reload lại số cũ.
 
-DÃ nh cho nhá»¯ng thuáº­t ngá»¯ chuyÃªn ngÃ nh Ä‘Æ°á»£c sá»­ dá»¥ng trong sÃ¡ch **[VN] CheatDev Book**.
+Để hack được tài sản, bạn phải tấn công đường truyền.
+Bạn phải chặn đứng lá thư (Packet) gửi đi từ máy bạn, sửa nội dung bức thư đó, rồi mới gửi cho Server.
+
+**Mục tiêu:**
+1.  Hiểu mô hình **Client-Server**.
+2.  Thực hiện kỹ thuật **Man-In-The-Middle (MITM)**.
+3.  Sử dụng **Wireshark** và **WPE Pro** để bắt và sửa gói tin.
+
+---
+
+## 7.1. Kiến Trúc Mạng (The Matrix Grid) 🌐
+Khi bạn chơi game online, máy tính của bạn (Client) và máy chủ (Server) nói chuyện với nhau liên tục bằng các gói tin (Packet).
+
+*   **Client:** "Tao vừa bắn thằng kia." (Gửi Packet).
+*   **Server:** "Để tao check... Ừ đúng, nó chết rồi." (Trả Packet).
+*   **Client:** "Ok, tao hiện animation nó ngã xuống."
+
+Nếu Hacker chặn được Packet đầu tiên và sửa thành *"Tao vừa bắn thằng kia Headshot"* -> Server sẽ tin sái cổ (nếu không check kỹ).
+
+![MITM Attack Diagram](07_Networking_Packet_Hacking/images/mitm_attack.png)
+
+---
+
+## 7.2. Wireshark - Máy X-Quang Gói Tin 🦴
+Wireshark không dùng để hack, nó dùng để **NHÌN**.
+Nó bắt toàn bộ dữ liệu đi qua card mạng của bạn.
+
+**Quy trình soi:**
+1.  Mở Wireshark -> Chọn mạng (Ethernet/WiFi).
+2.  Vào game, thực hiện hành động (VD: Mua một bình máu).
+3.  Ra Wireshark, dừng bắt (Stop).
+4.  Lọc packet: `ip.addr == [IP Server Game]`.
+5.  Tìm packet nào chứa dữ liệu khả nghi.
+
+**Vấn đề:** Game hiện đại dùng **HTTPS/SSL** hoặc mã hóa gói tin (Encryption). Wireshark sẽ chỉ thấy một đống giun dế vô nghĩa.
+-> Lúc này cần MITM Proxy.
+
+---
+
+## 7.3. WPE Pro / Winsock Packet Editor (Huyền Thoại Cổ Đại) ⚔️
+Đây là tool hack packet "quốc dân" thời Mu Online, Gunbound, Võ Lâm.
+Nó không bắt ở card mạng. Nó móc (Hook) vào hàm `send()` và `recv()` của API Windows ngay trong game.
+Do đó, nó bắt được gói tin **TRƯỚC KHI** bị mã hóa (đối với một số game cũ/cùi bắp).
+
+**Kỹ thuật Filter:**
+*   Tìm chuỗi byte đại diện cho hành động bắn súng. Ví dụ: `0A 01 00`.
+*   Tạo Filter: Cứ thấy `0A 01 00` thì tự động đổi thành `0A 02 00` (Skill mạnh hơn).
+*   Vào game bắn thường -> Server nhận được Skill cuối.
+
+---
+
+## 7.4. Man-In-The-Middle (MITM) Hiện Đại 🕵️‍♂️
+Với game mobile (Android/iOS) dùng HTTPS, chúng ta dùng **Charles Proxy** hoặc **Fiddler**.
+
+1.  Cài Charles Proxy trên PC.
+2.  Trên điện thoại, set Wifi Proxy trỏ về IP của PC.
+3.  Cài Certificate của Charles lên điện thoại để giải mã HTTPS.
+4.  Vào game. Charles sẽ hiện rõ mồn một các API game gọi lên server.
+    *   `POST /api/buy_item`
+    *   `{"item_id": 101, "price": 500}`
+5.  **Breakpoint:** Chuột phải vào request -> Breakpoints.
+6.  Vào game mua lại. Charles sẽ dừng request đó lại trước khi gửi đi.
+7.  Sửa `price: 500` thành `price: 1`.
+8.  Execute.
+9.  -> Nếu Server ngu ngơ, bạn vừa mua đồ xịn với giá 1 đồng. 💸
+
+---
+
+## 🛑 BÀI TẬP THỰC TẾ (LAB 7)
+1.  Tải **Fiddler Classic** (PC).
+2.  Mở một web game đơn giản (HTML5) hoặc client game cũ.
+3.  Thử bắt gói tin đăng nhập (Login packet).
+4.  Xem bạn có thấy Username/Password của mình dưới dạng Plaintext không? (Nếu có, game đó bảo mật kém).
+
+---
+
+[Tiếp theo: Chương 8 - Kernel Driver (Vùng Đất Cấm)](../08_Kernel_Driver_Development/README.md)
+
+
+<div style="page-break-after: always;"></div>
+
+# ☠️ Chương 8: Kernel Driver (Vùng Đất Cấm)
+
+> *"Ở Ring 3, nếu bạn sai, chương trình Crash. Ở Ring 0, nếu bạn sai, cả hệ điều hành sụp đổ (Blue Screen of Death)."*
+
+---
+
+## 🛑 SỨ MỆNH (MISSION BRIEFING)
+Tại sao chúng ta phải mạo hiểm xuống Kernel?
+Vì **Anti-Cheat** (Vanguard, EasyAntiCheat, BattlEye) đều nằm ở đó.
+Khi bạn dùng `ReadProcessMemory` ở User Mode (Ring 3), Anti-Cheat ở Kernel (Ring 0) sẽ nhìn thấy và chặn ngay lập tức. "Mày tuổi gì mà đòi sờ vào game của tao?".
+
+Muốn đánh bại Anti-Cheat, bạn phải ngang hàng với nó. Bạn phải viết **Kernel Driver**.
+
+**Mục tiêu:**
+1.  Hiểu kiến trúc **Ring 0 vs Ring 3**.
+2.  Hiểu sự nguy hiểm của **BSOD**.
+3.  Viết một **Driver Hello World** đơn giản.
+
+---
+
+## 8.1. Kiến Trúc Ring (The Hierarchy) 👑
+CPU Intel/AMD chia quyền lực thành 4 vòng tròn (Rings). Windows chỉ dùng 2 vòng:
+
+![Kernel Ring Diagram](08_Kernel_Driver_Development/images/kernel_ring.png)
+
+*   **Ring 3 (User Mode):** Nơi ở của dân thường (Chrome, Word, Game, và các tool hack gà mờ). Bạn làm gì ở đây cũng bị Ring 0 giám sát.
+*   **Ring 0 (Kernel Mode):** Nơi ở của Thượng đế (Windows Kernel, Drivers card màn hình, và Anti-Cheat). Ở đây, bạn có thể truy cập **mọi địa chỉ RAM** của bất kỳ process nào mà không cần xin phép.
+
+**Anti-Cheat hoạt động thế nào?**
+Nó cài một Driver (.sys) vào Ring 0. Nó đăng ký các hàm Callback:
+> *"Bất kỳ ai (Ring 3) định mở Handle vào process Game, hãy báo cho tao. Tao sẽ tước quyền ngay lập tức."*
+User Mode Hacker -> ☠️ Bất lực.
+
+---
+
+## 8.2. Rủi Ro (The Blue Screen of Death) 🟦
+Quyền lực càng lớn, trách nhiệm càng cao.
+Trong Ring 3, nếu code bạn lỗi (`Null Pointer`), chỉ có tool của bạn tắt ngúm.
+Trong Ring 0, nếu code bạn lỗi, **Windows sẽ dừng hoạt động ngay lập tức** để bảo vệ phần cứng. Màn hình xanh chết chóc (BSOD) hiện ra. Máy khởi động lại.
+
+> **Quy tắc số 1:** Test Driver trên máy ảo (VMware/VirtualBox) trước khi chạy thật. Đừng bao giờ code Driver trên máy chính nếu không muốn mất dữ liệu.
+
+---
+
+## 8.3. Chế Tạo Driver Đầu Tiên (Hello World .sys) 🚗
+Bạn cần cài đặt **Visual Studio** và **WDK (Windows Driver Kit)**.
+
+Tạo Project: `Kernel Mode Driver, Empty (KMDF)`.
+
+**Code `Driver.c`:**
+
+```c
+#include <ntddk.h>
+
+// Hàm dọn dẹp khi tắt Driver (Bắt buộc phải có, nếu không sẽ không tắt được Driver)
+void DriverUnload(PDRIVER_OBJECT pDriverObject) {
+    UNREFERENCED_PARAMETER(pDriverObject);
+    DbgPrint(">>> Hacker: Bye bye Kernel! Safe landing. <<<\n");
+}
+
+// Hàm chính (Giống main() trong C++)
+NTSTATUS DriverEntry(PDRIVER_OBJECT pDriverObject, PUNICODE_STRING pRegistryPath) {
+    UNREFERENCED_PARAMETER(pRegistryPath);
+
+    pDriverObject->DriverUnload = DriverUnload;
+
+    DbgPrint(">>> Hacker: HELLO RING 0! Power Overwhelming! <<<\n");
+
+    return STATUS_SUCCESS;
+}
+```
+
+**Biên dịch:** Bấm Build -> Bạn sẽ nhận được file `MyDriver.sys`.
+File này **không thể chạy bằng cách double click**.
+
+---
+
+## 8.4. Load Driver (Nhập Tịch Ring 0) 🛡️
+Windows 10/11 mặc định cấm load Driver không có chữ ký số (Unsigned Driver) để chống virus.
+Để load driver "cây nhà lá vườn" của chúng ta, bạn phải bật chế độ **Test Mode**.
+
+1.  Mở CMD (Admin).
+2.  Gõ: `bcdedit /set testsigning on`
+3.  Restart máy. (Bạn sẽ thấy chữ "Test Mode" ở góc màn hình).
+
+**Dùng Tool load:**
+Sử dụng **OSR Loader** hoặc **KDU** để load file `.sys` vào hệ thống.
+Sau khi load, dùng **DebugView** (của Sysinternals) để xem dòng log `>>> Hacker: HELLO RING 0!`.
+
+Nếu thấy nó -> Chúc mừng, bạn đã đặt chân vào thánh địa Kernel!
+
+---
+
+## 🛑 Cảnh Báo Cuối Cùng
+Viết Driver Hack Game là vi phạm EULA nghiêm trọng và có thể bị kiện.
+Kiến thức này chỉ để học tập và hiểu về OS Internals.
+Các Anti-Cheat hiện tại (Vanguard) chạy ngay từ khi boot máy. Cuộc chiến ở Ring 0 rất khốc liệt và đẫm máu (BSOD liên tục).
+
+---
+
+[Tiếp theo: Chương 9 - Anti-Cheat Evasion (Trốn Tìm)](../09_Anti_Cheat_Evasion/README.md)
+
+
+<div style="page-break-after: always;"></div>
+
+# 👻 Chương 9: Anti-Cheat Evasion (Nghệ Thuật Tàng Hình)
+
+> *"Hack đuợc game là Dũng. Hack mà không bị ban là Trí. Vừa hack vừa không bị ban suốt 10 năm là Thánh."*
+
+---
+
+## 🛑 SỨ MỆNH (MISSION BRIEFING)
+Bạn đã có súng (Cheat Engine), có kiếm (Internal Hook), có xe tăng (Kernel Driver).
+Nhưng kẻ địch (Anti-Cheat) có Radar.
+Nếu bạn bật hack lên và 5 phút sau tài khoản "bay màu", thì mọi kỹ thuật bạn học đều vô nghĩa.
+
+**Mục tiêu:**
+1.  Hiểu cơ chế phát hiện của Anti-Cheat (Static, Dynamic, Behavioral).
+2.  Học cách làm rối mã (Obfuscation) để chống quét tĩnh.
+3.  Học cách giả lập hành vi người thật (Humanizer) để chống quét hành vi.
+
+---
+
+## 9.1. Anti-Cheat Hoạt Động Thế Nào? 🛡️
+Anti-Cheat (AC) không phải phép thuật. Nó là một chương trình máy tính, và nó hoạt động dựa trên các quy tắc.
+
+![Anti-Cheat Architecture Diagram](09_AntiCheat_Evasion/images/ac_architecture.png)
+
+1.  **Static Analysis (Quét Tĩnh):** AC đọc file `.exe` hoặc `.dll` hack của bạn trên đĩa. Nó so sánh mã hash (MD5/SHA256) hoặc tìm các chuỗi ký tự đặc trưng (String Scanning).
+    *   *Ví dụ:* Nếu trong file hack của bạn có chữ "Cheat Engine" -> BAN.
+2.  **Dynamic Analysis (Quét Động):** AC quét RAM khi game đang chạy. Nó tìm các cửa sổ lạ, các luồng (Thread) lạ, hoặc các đoạn code bị tiêm vào (Injection Detect).
+3.  **Behavioral Analysis (Hành Vi):** AC (Server-side) theo dõi thống kê.
+    *   *Ví dụ:* Tỉ lệ Headshot của bạn là 99%? -> BAN. Chuột của bạn di chuyển một đường thẳng tắp (Aimbot)? -> BAN.
+
+---
+
+## 9.2. Kỹ Thuật Né Tránh (Evasion Arts) 🥷
+
+### 1. Junk Code & Polymorphism (Biến Hình)
+Để chống Static Scan (Signature), mỗi lần build hack, file `.exe` phải khác nhau hoàn toàn.
+*   **Junk Code:** Chèn thêm các đoạn code vô nghĩa vào.
+    ```cpp
+    // Code rác
+    int a = 123;
+    for(int i=0; i<100; i++) a += i;
+    // Code hack thật
+    HackHealth();
+    ```
+*   **VMProtect / Themida:** Dùng các phần mềm Packer thương mại để mã hóa file hack mỗi lần một khác.
+
+### 2. String Encryption (Giấu Chữ)
+Tuyệt đối không để chuỗi "Hack", "Trainer", "Health" dạng Plaintext trong file.
+*   **Xấu:** `FindWindowA(NULL, "Counter-Strike")`
+*   **Tốt:** Mã hóa chuỗi "Counter-Strike" thành `XorStr("Nbujufs-Strjlf")`. Khi chạy mới giải mã ra.
+
+### 3. Humanizer (Giả Người)
+Để chống Behavioral Scan (Aimbot), đừng bao giờ aim thẳng vào đầu ngay lập tức (Snap).
+*   **Smoothing:** Di chuyển tâm từ từ.
+*   **Random Bone:** Lúc bắn đầu, lúc bắn ngực, lúc bắn trượt (quan trọng!).
+*   **Reaction Time:** Thêm độ trễ. Người thường cần 200ms để phản xạ, đừng bắn ngay 1ms sau khi địch xuất hiện.
+
+---
+
+## 9.3. HWID Spoofer (Đường Lui Cuối Cùng) 🎭
+Nếu lỡ bị Ban, AC thường Ban luôn phần cứng (HWID: Mainboard, HDD, MAC Address).
+Để chơi lại, bạn cần **Spoofer**.
+*   Spoofer là một Kernel Driver làm giả thông tin phần cứng trả về cho AC.
+*   Hỏi Serial ổ cứng? -> Trả về số Random.
+*   Hỏi MAC Address? -> Trả về số Random.
+
+---
+
+## 🛑 BÀI TẬP TƯ DUY (MIND GAME)
+Hãy tưởng tượng bạn là lập trình viên Anti-Cheat.
+Làm sao để phát hiện một người chơi đang dùng Wallhack (nhìn xuyên tường)?
+1.  Chụp ảnh màn hình (Screenshot) máy người chơi gửi về Server? -> Hacker sẽ vẽ Wallhack lên lớp phủ (Overlay) không bị chụp.
+2.  Kiểm tra xem người chơi có ngắm vào địch đang núp sau tường không? -> Nếu aiming xuyên tường quá nhiều lần -> Flag.
+
+Hãy luôn tư duy hai chiều: **Hacker vs Security Dev.**
+
+---
+
+[Tiếp theo: Chương 10 - The Road Ahead (Lời Kết & Tài Nguyên)](../10_Loi_Ket/README.md)
+
+
+<div style="page-break-after: always;"></div>
+
+# 🏁 Chương 10: Lời Kết & Lộ Trình (The Road Ahead)
+
+> *"Kết thúc khóa huấn luyện không phải là hết. Nó là sự khởi đầu."*
+
+---
+
+## 🛑 TỔNG KẾT CHIẾN DỊCH (DEBRIEFING)
+Chúc mừng Tân binh! 🎉
+Bạn đã sống sót qua 9 chương huấn luyện khắc nghiệt nhất. Từ một người chỉ biết tải tool về dùng, bạn đã đi qua:
+1.  **Tư duy (Mindset):** Hiểu RAM là chiến trường.
+2.  **Công cụ (Tools):** Thành thạo Cheat Engine.
+3.  **Lập trình (Coding):** Tự viết Trainer External & Internal.
+4.  **Kỹ thuật (Techniques):** Hooking, DLL Injection, Reverse Engineering.
+5.  **Vùng cấm (Forbidden Zone):** Mobile Hacking & Kernel Driver.
+
+Bạn không còn là "Script Kiddie" nữa. Bạn đã nắm trong tay sức mạnh để thay đổi thực tại của Game.
+
+---
+
+## 10.1. Bản Đồ Năng Lực (Skill Tree) 🗺️
+Hành trình của một Game Hacker (Security Researcher) chia làm các cấp độ. Bạn đang ở đâu?
+
+![Hacker Roadmap Diagram](10_Final_Projects/images/roadmap.png)
+
+*   **Level 0-1:** Hầu hết game thủ dừng lại ở đây.
+*   **Level 2-3:** Bạn đã có thể tự làm tool hack bán kiếm tiền (nhưng đừng làm thế!).
+*   **Level 4-5:** Bạn có thể làm việc cho các công ty bảo mật (Red Team).
+*   **Level 6:** Đỉnh cao. Bạn có thể viết Anti-Cheat hoặc khai thác lỗ hổng Zero-day.
+
+---
+
+## 10.2. Đạo Đức & Pháp Luật (The Code) ⚖️
+Sức mạnh lớn đi kèm trách nhiệm lớn.
+*   **Black Hat (Mũ Đen):** Phá hoại game, bán hack, làm hỏng trải nghiệm người khác. -> **Kết cục:** Bị kiện, đi tù, cộng đồng khinh rẻ.
+*   **White Hat (Mũ Trắng):** Nghiên cứu lỗ hổng, báo cáo cho nhà phát hành (Bug Bounty), viết Anti-Cheat. -> **Kết cục:** Được tôn trọng, lương cao, sự nghiệp bền vững.
+
+> **Lời khuyên:** Hãy dùng kiến thức này để HỌC tập (Reverse Engineering), không phải để PHÁ hoại.
+
+---
+
+## 10.3. Tài Nguyên Tiếp Theo (Reinforcements) 📚
+Dừng lại là chết. Công nghệ thay đổi từng giờ.
+
+**Cộng Đồng (Forums):**
+1.  **UnknownCheats (.me):** Thánh địa của Game Hacking thế giới. Mọi source code xịn nhất đều từ đây ra. (Hãy đọc, đừng chỉ copy).
+2.  **GuidedHacking (.com):** Nơi có các tutorial video cực kỳ chi tiết (có trả phí).
+
+**Sách Gối Đầu Giường:**
+1.  *Practical Malware Analysis* (Michael Sikorski).
+2.  *Reversing: Secrets of Reverse Engineering* (Eldad Eilam).
+3.  *Rootkits and Bootkits* (Alex Matrosov).
+
+---
+
+## 🛑 LỜI TẠM BIỆT (DISMISSED)
+Cuốn sách này chỉ là tấm bản đồ. Con đường đi tiếp là do bạn chọn.
+Hãy giữ cái đầu lạnh và trái tim nóng.
+
+**Hẹn gặp lại ở Ring 0.**
+
+*Signed,*
+**VTech Digital Solution**
+*(a.k.a Antigravity)*
+
+---
+*(Hết)*
+
+
+<div style="page-break-after: always;"></div>
+
+# 📖 Từ Điển Thuật Ngữ (Glossary)
+
+Dành cho những thuật ngữ chuyên ngành được sử dụng trong sách **[VN] CheatDev Book**.
 
 ## A
-*   **Address (Äá»‹a chá»‰):** Vá»‹ trÃ­ cá»¥ thá»ƒ cá»§a dá»¯ liá»‡u trong RAM (VD: `0x00400000`).
-*   **ASLR (Address Space Layout Randomization):** CÆ¡ cháº¿ báº£o máº­t cá»§a HÄH, ngáº«u nhiÃªn hÃ³a vá»‹ trÃ­ module má»—i khi cháº¡y game Ä‘á»ƒ chá»‘ng hack cá»©ng (Hardcoded Address).
-*   **Assembly (ASM):** NgÃ´n ngá»¯ láº­p trÃ¬nh báº­c tháº¥p, Ã¡nh xáº¡ trá»±c tiáº¿p vá»›i mÃ£ mÃ¡y.
+*   **Address (Địa chỉ):** Vị trí cụ thể của dữ liệu trong RAM (VD: `0x00400000`).
+*   **ASLR (Address Space Layout Randomization):** Cơ chế bảo mật của HĐH, ngẫu nhiên hóa vị trí module mỗi khi chạy game để chống hack cứng (Hardcoded Address).
+*   **Assembly (ASM):** Ngôn ngữ lập trình bậc thấp, ánh xạ trực tiếp với mã máy.
 
 ## B
-*   **Base Address:** Äá»‹a chá»‰ báº¯t Ä‘áº§u cá»§a má»™t Module (file .exe hoáº·c .dll) trong bá»™ nhá»›.
-*   **Breakpoint:** Äiá»ƒm dá»«ng. Lá»‡nh cho Debugger dá»«ng chÆ°Æ¡ng trÃ¬nh láº¡i táº¡i má»™t dÃ²ng code Ä‘á»ƒ kiá»ƒm tra.
+*   **Base Address:** Địa chỉ bắt đầu của một Module (file .exe hoặc .dll) trong bộ nhớ.
+*   **Breakpoint:** Điểm dừng. Lệnh cho Debugger dừng chương trình lại tại một dòng code để kiểm tra.
 
 ## C
-*   **Class:** KhuÃ´n máº«u dá»¯ liá»‡u trong láº­p trÃ¬nh hÆ°á»›ng Ä‘á»‘i tÆ°á»£ng (C++).
-*   **Code Cave:** CÃ¡c vÃ¹ng trá»‘ng trong bá»™ nhá»› (do cÄƒn chá»‰nh bá»™ nhá»›) mÃ  Hacker cÃ³ thá»ƒ chÃ¨n code vÃ o.
+*   **Class:** Khuôn mẫu dữ liệu trong lập trình hướng đối tượng (C++).
+*   **Code Cave:** Các vùng trống trong bộ nhớ (do căn chỉnh bộ nhớ) mà Hacker có thể chèn code vào.
 
 ## D
-*   **DLL Injection:** Ká»¹ thuáº­t tiÃªm má»™t file Dynamic Link Library (.dll) vÃ o tiáº¿n trÃ¬nh game Ä‘á»ƒ cháº¡y code cá»§a mÃ¬nh trong Ä‘Ã³.
-*   **DMA (Dynamic Memory Allocation):** Cáº¥p phÃ¡t bá»™ nhá»› Ä‘á»™ng (Heap). NÆ¡i chá»©a dá»¯ liá»‡u thay Ä‘á»•i liÃªn tá»¥c.
+*   **DLL Injection:** Kỹ thuật tiêm một file Dynamic Link Library (.dll) vào tiến trình game để chạy code của mình trong đó.
+*   **DMA (Dynamic Memory Allocation):** Cấp phát bộ nhớ động (Heap). Nơi chứa dữ liệu thay đổi liên tục.
 
 ## E
-*   **ESP (Extra Sensory Perception):** Hack nhÃ¬n xuyÃªn tÆ°á»ng. Hiá»ƒn thá»‹ thÃ´ng tin (MÃ¡u, TÃªn, Khung xÆ°Æ¡ng) lÃªn mÃ n hÃ¬nh.
-*   **External Hack:** Tool hack cháº¡y nhÆ° má»™t tiáº¿n trÃ¬nh riÃªng biá»‡t, dÃ¹ng Windows API Ä‘á»ƒ Ä‘á»c/ghi bá»™ nhá»› game.
+*   **ESP (Extra Sensory Perception):** Hack nhìn xuyên tường. Hiển thị thông tin (Máu, Tên, Khung xương) lên màn hình.
+*   **External Hack:** Tool hack chạy như một tiến trình riêng biệt, dùng Windows API để đọc/ghi bộ nhớ game.
 
 ## H
-*   **Heap:** VÃ¹ng nhá»› dÃ¹ng Ä‘á»ƒ chá»©a cÃ¡c biáº¿n Ä‘á»™ng (Object, NhÃ¢n váº­t) Ä‘Æ°á»£c cáº¥p phÃ¡t báº±ng `new` hoáº·c `malloc`.
-*   **Hexadecimal (Hex):** Há»‡ tháº­p lá»¥c phÃ¢n (cÆ¡ sá»‘ 16), dÃ¹ng Ä‘á»ƒ biá»ƒu diá»…n Ä‘á»‹a chá»‰ bá»™ nhá»› ngáº¯n gá»n.
-*   **Hooking:** Ká»¹ thuáº­t cháº·n vÃ  chuyá»ƒn hÆ°á»›ng dÃ²ng lá»‡nh cá»§a má»™t hÃ m trong game sang hÃ m cá»§a Hacker.
+*   **Heap:** Vùng nhớ dùng để chứa các biến động (Object, Nhân vật) được cấp phát bằng `new` hoặc `malloc`.
+*   **Hexadecimal (Hex):** Hệ thập lục phân (cơ số 16), dùng để biểu diễn địa chỉ bộ nhớ ngắn gọn.
+*   **Hooking:** Kỹ thuật chặn và chuyển hướng dòng lệnh của một hàm trong game sang hàm của Hacker.
 
 ## I
-*   **IDA Pro:** TrÃ¬nh Disassembler chuyÃªn nghiá»‡p nháº¥t tháº¿ giá»›i, dÃ¹ng Ä‘á»ƒ phÃ¢n tÃ­ch tÄ©nh (Static Analysis).
-*   **IL2CPP (Intermediate Language to C++):** CÃ´ng nghá»‡ cá»§a Unity, chuyá»ƒn code C# sang C++ Ä‘á»ƒ tÄƒng hiá»‡u nÄƒng (vÃ  lÃ m khÃ³ Hacker).
-*   **Internal Hack:** Code hack cháº¡y bÃªn trong bá»™ nhá»› game (thÆ°á»ng lÃ  DLL).
+*   **IDA Pro:** Trình Disassembler chuyên nghiệp nhất thế giới, dùng để phân tích tĩnh (Static Analysis).
+*   **IL2CPP (Intermediate Language to C++):** Công nghệ của Unity, chuyển code C# sang C++ để tăng hiệu năng (và làm khó Hacker).
+*   **Internal Hack:** Code hack chạy bên trong bộ nhớ game (thường là DLL).
 
 ## K
-*   **Kernel (Ring 0):** NhÃ¢n há»‡ Ä‘iá»u hÃ nh. NÆ¡i cÃ³ quyá»n háº¡n cao nháº¥t. Anti-Cheat thÆ°á»ng cháº¡y á»Ÿ Ä‘Ã¢y.
+*   **Kernel (Ring 0):** Nhân hệ điều hành. Nơi có quyền hạn cao nhất. Anti-Cheat thường chạy ở đây.
 
 ## O
-*   **Offset:** Khoáº£ng cÃ¡ch tá»« vá»‹ trÃ­ báº¯t Ä‘áº§u (Base) Ä‘áº¿n vá»‹ trÃ­ cáº§n tÃ¬m. VD: `Address = Base + Offset`.
-*   **Overlay:** Má»™t cá»­a sá»• trong suá»‘t náº±m Ä‘Ã¨ lÃªn game Ä‘á»ƒ váº½ ESP.
+*   **Offset:** Khoảng cách từ vị trí bắt đầu (Base) đến vị trí cần tìm. VD: `Address = Base + Offset`.
+*   **Overlay:** Một cửa sổ trong suốt nằm đè lên game để vẽ ESP.
 
 ## P
-*   **Pointer (Con trá»):** Má»™t biáº¿n chá»©a Ä‘á»‹a chá»‰ cá»§a biáº¿n khÃ¡c.
-*   **Pointer Chain:** Má»™t chuá»—i cÃ¡c con trá» trá» Ä‘áº¿n nhau (A trá» B, B trá» C, C trá» MÃ¡u). DÃ¹ng Ä‘á»ƒ tÃ¬m Ä‘á»‹a chá»‰ tháº­t sau má»—i láº§n game restart.
+*   **Pointer (Con trỏ):** Một biến chứa địa chỉ của biến khác.
+*   **Pointer Chain:** Một chuỗi các con trỏ trỏ đến nhau (A trỏ B, B trỏ C, C trỏ Máu). Dùng để tìm địa chỉ thật sau mỗi lần game restart.
 
 ## R
-*   **ReClass:** CÃ´ng cá»¥ giÃºp khÃ´i phá»¥c cáº¥u trÃºc Class (Struct) tá»« bá»™ nhá»› thÃ´.
-*   **RPM (ReadProcessMemory):** HÃ m Windows API Ä‘á»ƒ Ä‘á»c RAM.
+*   **ReClass:** Công cụ giúp khôi phục cấu trúc Class (Struct) từ bộ nhớ thô.
+*   **RPM (ReadProcessMemory):** Hàm Windows API để đọc RAM.
 
 ## S
-*   **Signature Scanning (SigScan):** Ká»¹ thuáº­t tÃ¬m vá»‹ trÃ­ hÃ m trong bá»™ nhá»› dá»±a trÃªn má»™t chuá»—i byte Ä‘áº·c trÆ°ng (Pattern) thay vÃ¬ Ä‘á»‹a chá»‰ cá»‘ Ä‘á»‹nh.
-*   **Stack:** VÃ¹ng nhá»› ngÄƒn xáº¿p, chá»©a biáº¿n cá»¥c bá»™ vÃ  Ä‘á»‹a chá»‰ tráº£ vá» cá»§a hÃ m.
+*   **Signature Scanning (SigScan):** Kỹ thuật tìm vị trí hàm trong bộ nhớ dựa trên một chuỗi byte đặc trưng (Pattern) thay vì địa chỉ cố định.
+*   **Stack:** Vùng nhớ ngăn xếp, chứa biến cục bộ và địa chỉ trả về của hàm.
 
 ## W
-*   **WPM (WriteProcessMemory):** HÃ m Windows API Ä‘á»ƒ ghi Ä‘Ã¨ RAM.
-
+*   **WPM (WriteProcessMemory):** Hàm Windows API để ghi đè RAM.

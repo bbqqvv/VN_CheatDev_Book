@@ -1,6 +1,7 @@
 # 📘 [VN] CheatDev Book: Từ Zero đến Hero
 
 **Tác giả:** Antigravity (Google DeepMind) & User
+**Nhà Xuất Bản:** VTech Digital Solution
 **Phiên bản:** 1.0 (Legendary Edition)
 
 Chào mừng bạn đến với cuốn sách giáo khoa toàn diện nhất về **Game Hacking**, **Reverse Engineering** và **An Ninh Mạng**.

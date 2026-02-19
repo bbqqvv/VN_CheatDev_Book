@@ -1,77 +1,102 @@
-# Chương 2: Công Cụ Thần Thánh (God's Toys) 🛠️
+# ⚔️ Chương 2: Làm Chủ Cheat Engine (Weapon Mastery)
 
-*"Người thợ giỏi không đổ lỗi cho công cụ, nhưng người thợ tồi thì không biết dùng công cụ."*
-
-Để hack game, bạn cần những đôi mắt nhìn xuyên thấu RAM. Đây là bộ công cụ tiêu chuẩn của ngành.
+> *"Cheat Engine không chỉ là tool hack. Nó là kính hiển vi, là dao mổ, và là khẩu súng bắn tỉa của mọi Game Hacker."*
 
 ---
 
-## 2.1. Cheat Engine (CE) - Huyền Thoại
-Nếu bạn chưa cài Cheat Engine, hãy cài ngay. Đừng tải bản crack, bản gốc miễn phí và mã nguồn mở.
+## 🛑 SỨ MỆNH (MISSION BRIEFING)
+Ở Chương 1, bạn đã biết RAM là chiến trường.
+Ở Chương này, bạn sẽ học cách sử dụng vũ khí tối thượng: **Cheat Engine (CE)**.
 
-### Các kỹ thuật quét (Scan Types)
-1.  **Exact Value (Giá trị chính xác):** Bạn biết rõ số máu là 100. Quét 100. Bị bắn còn 90. Next Scan 90. -> Tìm ra ngay.
-2.  **Unknown Initial Value (Giá trị khởi đầu không rõ):** Dùng cho thanh máu không hiện số (chỉ có thanh đỏ).
-    *   Bắt đầu quét: "Unknown Initial Value".
-    *   Mất máu -> Scan "Decreased Value" (Giá trị giảm).
-    *   Hồi máu -> Scan "Increased Value" (Giá trị tăng).
-    *   Đứng yên -> Scan "Unchanged Value" (Không đổi).
-    *   Lặp lại đến khi còn ít kết quả.
+Đừng lầm tưởng CE chỉ dùng để chỉnh tiền game offline. Các kỹ thuật `Scan`, `Debugger`, `Disassembler` của nó là nền tảng cho mọi tool hack cao cấp sau này (kể cả hack game online).
 
-### Pointer Scan (Tìm địa chỉ gốc)
-Khi bạn tìm được địa chỉ Máu (VD: `0x12345678`), reset game nó sẽ mất. Bạn cần tìm Pointer.
-1.  Chuột phải vào địa chỉ Máu -> **"Pointer scan for this address"**.
-2.  CE sẽ lưu lại một bản đồ bộ nhớ (snapshot).
-3.  Tắt game, mở lại. Tìm lại địa chỉ Máu mới (VD: `0x22222222`).
-4.  Vào cửa sổ Pointer Scan -> **"Rescan memory"** -> Nhập địa chỉ mới `0x22222222`.
-5.  CE sẽ so sánh 2 lần quét và chỉ giữ lại những đường dẫn trỏ đúng tới cả 2 địa chỉ. Đó là **Multi-level Pointer** bạn cần.
+**Mục tiêu:**
+1.  Hiểu cơ chế **Lọc (Filtering)** của CE.
+2.  Thành thạo 3 kỹ thuật Scan tử thần: **Exact Value**, **Unknown Initial Value**, **Floating Point**.
+3.  Biết cách tạo **Cheat Table (.CT)** để lưu trữ chiến công.
 
 ---
 
-## 2.2. ReClass.NET - Kính Hiển Vi Cấu Trúc
-Cheat Engine giúp tìm 1 giá trị. ReClass giúp bạn nhìn thấy **cả một khu phố**.
+## 2.1. Cơ Chế Hoạt Động (The Logic) 🧠
+Làm sao CE tìm được đúng địa chỉ máu trong đống hỗn độn hàng tỷ byte của RAM?
+Nó dùng phương pháp **LOẠI TRỪ (Elimination)**.
 
-### Tại sao cần ReClass?
-Lập trình viên Game thiết kế nhân vật theo **Class**:
-```cpp
-class Soldier {
-    char pad[4];
-    int Health;      // Offset 4
-    int Armor;       // Offset 8
-    Vector3 Position;// Offset 12 (X, Y, Z)
-};
-```
-Trong bộ nhớ, các biến này nằm sát nhau.
-Nếu bạn tìm được `Health`, chắc chắn `Armor` nằm ngay sau nó, và `Position` nằm sau `Armor`.
-**ReClass** cho phép bạn nhập địa chỉ `Health` vào, và nó sẽ hiển thị các byte xung quanh dưới dạng bảng. Bạn có thể đoán ra các biến khác mà không cần tìm kiếm.
+![Scanning Logic Diagram](images/scanning_logic.png)
+
+1.  **First Scan:** Quét toàn bộ RAM xem ai có giá trị `100` (giả sử máu là 100). Có thể tìm ra 1 triệu kết quả.
+2.  **Change:** Bạn vào game, để quái đánh còn `90` máu.
+3.  **Next Scan:** Bảo CE "Trong 1 triệu thằng kia, thằng nào giờ biến thành 90?".
+4.  **Repeat:** Lặp lại cho đến khi chỉ còn 1 kẻ sống sót. Đó là địa chỉ máu.
 
 ---
 
-## 2.3. x64dbg & IDA Pro (Dành cho dân chuyên)
-*   **x64dbg:** Trình gỡ lỗi (Debugger). Dùng để đặt Breakpoint. Ví dụ: Bạn muốn biết dòng code nào trừ tiền của bạn?
-    *   Tìm địa chỉ Tiền.
-    *   Đặt **Hardware Breakpoint on Write** (Dừng khi có ghi).
-    *   Vào game mua đồ.
-    *   Game sẽ "đóng băng" ngay lập tức tại dòng codeAssembly thực hiện việc trừ tiền (`SUB EAX, EBX`).
-    *   Bạn có thể sửa lệnh đó thành `NOP` (No Operation - Không làm gì cả) -> Mua đồ không mất tiền.
+## 2.2. Kỹ Thuật 1: Exact Value Scan (Xạ Thủ) 🔫
+Dùng khi bạn **nhìn thấy số cụ thể** trên màn hình (Máu, Đạn, Tiền).
 
-*   **IDA Pro:** Trình phân tích tĩnh. Dùng để đọc file `.exe` hoặc `.so` khi chưa chạy game. Nó vẽ ra sơ đồ luồng đi (Flowchart) của các hàm logic.
+**Bài Tập:** Hack Đạn trong `DummyGame` (hoặc Tutorial Step 2 của CE).
+
+**Quy Trình Tác Chiến:**
+1.  **Nhập số đạn hiện tại** (VD: 30) vào ô `Value`.
+2.  Chọn `Scan Type` = **Exact Value**.
+3.  Chọn `Value Type` = **4 Bytes** (Chuẩn công nghiệp).
+4.  Bấm **First Scan**. (Kết quả: Hàng ngàn địa chỉ).
+5.  Vào game bắn 1 viên (Đạn còn 29).
+6.  Nhập `29` vào ô `Value` -> Bấm **Next Scan**.
+7.  Lặp lại cho đến khi còn dưới 5 địa chỉ.
+8.  Kéo xuống dưới (Cheat Table), sửa Value thành `9999`.
+9.  Vào game bắn thử. Nếu đạn không giảm hoặc tăng lên 9999 -> **HEADSHOT!** 🎯
 
 ---
 
-## 2.4. Bài Tập Thực Hành (Lab 2)
-Sử dụng `DummyGame.exe` (đã biên dịch ở Chương 1).
+## 2.3. Kỹ Thuật 2: Unknown Initial Value (Truy Vết) 👣
+Dùng khi bạn **không biết số cụ thể** (Thanh máu dạng thanh trượt, không hiện số).
 
-**Nhiệm vụ 1: Hack Máu**
-1.  Dùng CE tìm địa chỉ Máu.
-2.  Đóng băng (Freeze) nó cở 999.
-3.  Chờ xem console có báo "YOU DIED" không.
+**Quy Trình Tác Chiến:**
+1.  Chọn `Scan Type` = **Unknown initial value**.
+2.  Bấm **First Scan**. (CE sẽ ghi nhớ toàn bộ RAM hiện tại).
+3.  Vào game, để mất một ít máu.
+4.  Chọn `Scan Type` = **Decreased value** (Giá trị đã giảm).
+5.  Bấm **Next Scan**.
+6.  Vào game, đứng yên hồi máu (hoặc bơm máu).
+7.  Chọn `Scan Type` = **Increased value**.
+8.  Bấm **Next Scan**.
+9.  Lặp lại (Decreased/Increased/Unchanged) cho đến khi tìm ra.
 
-**Nhiệm vụ 2: Tìm Offset Đạn (Ammo)**
-1.  Bạn đã có địa chỉ Máu (Ví dụ: `0x00EFF964`).
-2.  Trong code C++ chương 1, `Health` khai báo trước, `Ammo` khai báo sau. Cả 2 là `int` (4 byte).
-3.  Theo logic: Địa chỉ Đạn = Địa chỉ Máu + 4 (`0x00EFF968`).
-4.  Thử vào CE, "Add Address Manually", nhập `Địa chỉ Máu + 4`. Xem giá trị đó có phải là 30 (số đạn) không?
-5.  Nếu đúng, chúc mừng bạn đã hiểu về **Struct Offset**!
+> **Mẹo:** Nếu thanh máu đầy, quét Scan Type = **Changed value** liên tục cũng là một cách hay.
 
-[Tiếp theo: Chương 3 - External Hacking](../03_Lap_Trinh_External/README.md)
+---
+
+## 2.4. Kỹ Thuật 3: Floating Point (Bắn Tỉa Tọa Độ) 📡
+Dùng cho **Máu (dạng %)** hoặc **Tọa độ (X, Y, Z)**.
+Máy tính lưu số thực (có dấu chấm) khác hoàn toàn số nguyên.
+
+**Quy Trình:**
+*   Đổi `Value Type` từ `4 Bytes` sang **Float**.
+*   Các bước Scan y hệt như Exact Value.
+*   **Lưu ý:** Nếu Scan Float không ra, hãy thử **Double**. (Game xịn thường dùng Double cho tọa độ để bản đồ rộng không bị lỗi).
+
+---
+
+## 2.5. Memory Viewer & Pointers (Thâm Nhập Sâu) 🕵️‍♂️
+Tìm được địa chỉ chưa phải là xong. Khởi động lại game là mất.
+Chúng ta cần tìm **Con Trỏ (Pointer)** để hack vĩnh viễn.
+
+1.  Chuột phải vào địa chỉ hack được -> **Pointer Scan for this address**.
+2.  Chọn **Max Level** = 5 (Đừng tham quá, 5 tầng là đủ sâu).
+3.  Bấm OK và chờ đợi.
+4.  Sau khi Scan xong, tắt game bật lại.
+5.  Vào bảng Pointer Scan -> **Rescan memory** -> Chọn process game mới.
+6.  Những pointer nào vẫn trỏ đúng về máu -> Đó là **Pointer Xịn**.
+
+---
+
+## 🛑 NHIỆM VỤ VỀ NHÀ (HOMEWORK)
+1.  Hoàn thành **Tutorial 1 đến 5** của Cheat Engine (Vào Help -> Cheat Engine Tutorial).
+2.  Dùng `DummyGame.exe` ở chương 1:
+    *   Hack `Health` thành 99999.
+    *   Hack `Ammo` thành vô hạn.
+    *   Tìm Pointer của `Health` (Level nâng cao).
+
+---
+
+[Tiếp theo: Chương 3 - External Hacking (C++ Project đầu tiên)](../03_Lap_Trinh_External/README.md)

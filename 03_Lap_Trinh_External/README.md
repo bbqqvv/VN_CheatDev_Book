@@ -1,111 +1,111 @@
-# Chương 3: Lập Trình Hack External (Ngoại Khoa) 💉
+# 🩸 Chương 3: External Hacking (First Blood)
 
-*"An toàn, không đau, không xâm lấn."*
-
-Sau khi đã chơi chán với Cheat Engine, bạn muốn tự động hóa mọi thứ? Bạn muốn một tool bấm F1 là đầy máu chứ không phải Alt-Tab ra ngoài tìm giá trị?
-Chào mừng đến với **Lập trình External**.
-
-External Hack là một chương trình `.exe` riêng biệt, chạy song song với game và dùng quyền Admin để "thò tay" vào bộ nhớ game.
+> *"Dùng Cheat Engine là đi mượn kiếm. Tự code Trainer là tự rèn kiếm cho riêng mình."*
 
 ---
 
-## 3.1. Các Hàm Windows API Quyền Lực
-Thư viện `<windows.h>` cung cấp 4 hàm thần thánh:
+## 🛑 SỨ MỆNH (MISSION BRIEFING)
+Bạn đã biết tìm địa chỉ bằng Cheat Engine. Nhưng bạn không thể bắt khách hàng của mình tải Cheat Engine về rồi làm thủ công từng bước được.
+Bạn cần đóng gói kỹ thuật đó vào một file `.exe` duy nhất. Bấm 1 nút -> Hack xong.
 
-1.  `FindWindowA(NULL, "Tên Cửa Sổ Game")`: Tìm cửa sổ game đang chạy. Trả về `HWND`.
-2.  `GetWindowThreadProcessId(hwnd, &pid)`: Từ cửa sổ, lấy ra ID của tiến trình (PID).
-3.  `OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid)`: Mở cửa vào nhà game với quyền cao nhất. Trả về `HANDLE`.
-4.  `ReadProcessMemory (RPM)` / `WriteProcessMemory (WPM)`: Đọc và Ghi dữ liệu.
+Đó gọi là **External Hacking**: Viết một phần mềm chạy *bên ngoài* game, dùng quyền Admin thò tay vào sửa RAM của game.
+
+**Mục tiêu:**
+1.  Hiểu quy trình **OpenProcess**.
+2.  Sử dụng thuần thục 2 hàm WinAPI thần thánh: `ReadProcessMemory` (RPM) và `WriteProcessMemory` (WPM).
+3.  Code một **Trainer C++** hoàn chỉnh hack `DummyGame`.
 
 ---
 
-## 3.2. Code Mẫu Full: External Trainer (C++)
-Đây là một Trainer hoàn chỉnh cho `DummyGame.exe` (Chương 1).
+## 3.1. Quy Trình Xâm Nhập (Infiltration Flow) 🕵️‍♂️
+Windows bảo vệ các Process rất nghiêm ngặt. Process A không thể tự tiện sửa Process B.
+Để làm được điều đó, Hacker phải xin một cái "Chìa khóa" (Handle) từ hệ điều hành.
 
-### `Trainer.cpp`
+![API Flow Diagram](images/api_flow.png)
+
+1.  **Find Window:** Tìm cửa sổ game để lấy `Process ID` (PID).
+2.  **OpenProcess:** Dùng PID để xin Windows cấp quyền truy cập (`PROCESS_ALL_ACCESS`).
+3.  **Read/Write:** Dùng Handle đã xin được để Đọc/Ghi RAM.
+
+---
+
+## 3.2. Vũ Khí C++ (The Arsenal) 🧰
+
+### `FindWindowA`
+Tìm cửa sổ game bằng tên Class hoặc tên Title.
+```cpp
+HWND hwnd = FindWindowA(NULL, "Dummy Game for Hacking");
+```
+
+### `GetWindowThreadProcessId`
+Lấy số chứng minh thư (PID) của game.
+```cpp
+DWORD pid;
+GetWindowThreadProcessId(hwnd, &pid);
+```
+
+### `OpenProcess`
+Xin chìa khóa vào nhà.
+```cpp
+HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
+```
+
+### `WriteProcessMemory` (WPM)
+Cú đấm quyết định. Ghi đè giá trị mới vào địa chỉ cũ.
+```cpp
+int newHealth = 9999;
+WriteProcessMemory(hProcess, (LPVOID)0xDEADBEEF, &newHealth, sizeof(newHealth), NULL);
+```
+
+---
+
+## 3.3. Thực Hành: Code Trainer Đầu Tiên (Project: FirstBlood) 🩸
+Hãy tạo một project C++ mới tên là `SimpleTrainer`.
+
+**Yêu cầu:** Đã chạy `DummyGame.exe` và dùng Cheat Engine tìm ra địa chỉ Health (Ví dụ: `0x00EFF690` - *Lưu ý: Địa chỉ máy bạn sẽ khác, hãy thay thế vào code*).
+
 ```cpp
 #include <iostream>
-#include <windows.h>
-#include <string>
-#include <vector>
-
-// Hàm giúp lấy Module Base Address (Vùng bắt đầu của file .exe trong RAM)
-// Cần thiết để tìm địa chỉ tĩnh (Static Address)
-uintptr_t GetModuleBaseAddress(DWORD procId, const wchar_t* modName) {
-    uintptr_t modBaseAddr = 0;
-    HANDLE hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, procId);
-    if (hSnap != INVALID_HANDLE_VALUE) {
-        MODULEENTRY32 modEntry;
-        modEntry.dwSize = sizeof(modEntry);
-        if (Module32First(hSnap, &modEntry)) {
-            do {
-                if (!_wcsicmp(modEntry.szModule, modName)) {
-                    modBaseAddr = (uintptr_t)modEntry.modBaseAddr;
-                    break;
-                }
-            } while (Module32Next(hSnap, &modEntry));
-        }
-    }
-    CloseHandle(hSnap);
-    return modBaseAddr;
-}
+#include <windows.h> // Thư viện chứa các hàm WinAPI
 
 int main() {
-    std::cout << "--- EXTERNAL TRAINER v1.0 ---\n";
-    std::cout << "Dang tim game...\n";
+    SetConsoleTitleA("Simple External Trainer");
+    std::cout << ">>> WAITING FOR GAME... <<<" << std::endl;
 
-    // 1. Tìm Game
-    HWND hwnd = FindWindowA(NULL, "Dummy Game for Hacking");
-    if (!hwnd) {
-        std::cout << "Khong thay game! Hay mo DummyGame.exe truoc.\n";
-        system("pause");
+    // 1. Tìm cửa sổ Game
+    HWND hwnd = FindWindowA(NULL, "Dummy Game - Targeted by VTech");
+    if (hwnd == NULL) {
+        std::cout << "[-] Khong tim thay game! Hay bat DummyGame.exe truoc." << std::endl;
         return 0;
     }
+    std::cout << "[+] Da tim thay cua so Game!" << std::endl;
 
     // 2. Lấy PID
     DWORD pid;
     GetWindowThreadProcessId(hwnd, &pid);
-    
-    // 3. Mở Process
+    std::cout << "[+] Process ID: " << pid << std::endl;
+
+    // 3. Mở Process (Xin quyền truy cập)
     HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
-    if (!hProcess) {
-        std::cout << "Khong the mo process! (Chay duoi quyen Admin?)\n";
+    if (hProcess == NULL) {
+        std::cout << "[-] Khong the mo Process. Hay chay Admin!" << std::endl;
         return 0;
     }
-    
-    std::cout << "Da ket noi toi Process ID: " << pid << "\n";
+    std::cout << "[+] OpenProcess Success! Handle: " << hProcess << std::endl;
 
-    // 4. Tìm Pointer Chain
-    // Giả sử (từ bài tập trước), bạn tìm ra:
-    // Health Address = [AddressOfPlayer] + 0x24
-    // AddressOfPlayer nam tai: 0x00EFF964 (Ví dụ - Số này thay đổi mỗi lần chạy nếu bạn không tìm Base Address)
-    
-    // Ở bài này, tôi sẽ nhập địa chỉ Máu thủ công (bạn copy từ Cheat Engine sang)
-    uintptr_t healthAddr; 
-    std::cout << "Nhap Dia Chi Mau (Hex, vd: 00EFF964): ";
-    std::cin >> std::hex >> healthAddr;
+    // 4. Hack Loop
+    // Thay địa chỉ này bằng địa chỉ bạn tìm được từ Cheat Engine!!
+    uintptr_t healthAddr = 0x00EFF690; 
+    int cheatVal = 9999;
 
-    // 5. Vòng lặp Hack
-    std::cout << "[F1] Hack Mau (999)\n[F2] Hack Dan (999)\n[Insert] Thoat\n";
-    
     while (true) {
-        // Nếu bấm F1
-        if (GetAsyncKeyState(VK_F1) & 1) {
-            int newHealth = 999;
-            WriteProcessMemory(hProcess, (BYTE*)healthAddr, &newHealth, sizeof(newHealth), nullptr);
-            std::cout << "-> Da Hack Mau!\n";
+        if (GetAsyncKeyState(VK_F1) & 1) { // Nếu bấm F1
+            // Ghi đè máu
+            WriteProcessMemory(hProcess, (LPVOID)healthAddr, &cheatVal, sizeof(cheatVal), NULL);
+            std::cout << "[!] HACKED: Set Health -> 9999" << std::endl;
+            Beep(1000, 100); // Kêu Bíp cho ngầu
         }
-
-        // Nếu bấm F2 (Ammo là Health + 4)
-        if (GetAsyncKeyState(VK_F2) & 1) {
-            int newAmmo = 999;
-            uintptr_t ammoAddr = healthAddr + 0x04; // Offset Struct
-            WriteProcessMemory(hProcess, (BYTE*)ammoAddr, &newAmmo, sizeof(newAmmo), nullptr);
-            std::cout << "-> Da Hack Dan!\n";
-        }
-
-        if (GetAsyncKeyState(VK_INSERT) & 1) break;
-        Sleep(10);
+        Sleep(50); // Nghỉ nhẹ để đỡ ngốn CPU
     }
 
     CloseHandle(hProcess);
@@ -115,18 +115,12 @@ int main() {
 
 ---
 
-## 3.3. Vẽ Overlay (ESP)
-Hack "nhìn xuyên tường" thực chất là vẽ các hình chữ nhật lên màn hình.
-Để làm được điều này từ External:
-1.  Tạo một cửa sổ trong suốt, luôn nằm trên cùng (Topmost), kích thước bằng màn hình game.
-2.  Dùng DirectX hoặc GDI để vẽ lên cửa sổ đó.
-3.  Tính toán tọa độ:
-    *   Đọc tọa độ địch (X, Y, Z) trong game.
-    *   Dùng công thức **WorldToScreen** (biến đổi ma trận ViewMatrix) để đổi tọa độ 3D thành tọa độ 2D trên màn hình (Pixel X, Pixel Y).
-    *   Vẽ hình chữ nhật tại (Pixel X, Pixel Y).
+## 🛑 NHIỆM VỤ (TOP SECRET)
+1.  Code lại ví dụ trên.
+2.  Thay địa chỉ `healthAddr` đúng với máy của bạn.
+3.  Chạy Trainer và bấm **F1** để xem `DummyGame` có hồi máu không.
+4.  **Thử thách:** Thêm tính năng Hack Ammo (Đạn) vào phím **F2**.
 
-**[Bài Tập]:**
-1.  Biên dịch `Trainer.cpp`.
-2.  Chạy `DummyGame.exe`.
-3.  Lấy địa chỉ Máu từ Cheat Engine.
-4.  Nhập vào Trainer và bấm F1 xem máu có nhảy lên 999 không.
+---
+
+[Tiếp theo: Chương 4 - Internal Hacking (Tiêm DLL - Kỹ thuật thượng thừa)](../04_Lap_Trinh_Internal/README.md)

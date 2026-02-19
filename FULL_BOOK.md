@@ -3,6 +3,8 @@ title: "[VN] CheatDev Book: The Legendary Edition"
 author: "VTech Digital Solution"
 date: "2026-02-19"
 ---
+![Book Cover](cover.png)
+
 # [VN] CheatDev Book: The Legendary Edition
 ## *Hệ sinh thái Game Hacking & Reverse Engineering thực chiến*
 

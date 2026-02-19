@@ -1,3 +1,5 @@
+![Book Cover](cover.png)
+
 # [VN] CheatDev Book: The Legendary Edition
 ## *Hệ sinh thái Game Hacking & Reverse Engineering thực chiến*
 
